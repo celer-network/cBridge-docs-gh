@@ -52,4 +52,4 @@ SlowMist Report: [liquidity bridge](https://github.com/celer-network/sgn-v2-cont
 
 ### $2M Bug Bounty
 
-In addition to the security audits, Celer cBridge has a standing [$2M bug bounty in ImmuneF](https://immunefi.com/bounty/celer/)i.&#x20;
+In addition to the security audits, Celer cBridge has a standing [$2M bug bounty in ImmuneF](https://immunefi.com/bounty/celer/)i
