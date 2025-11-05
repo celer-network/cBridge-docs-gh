@@ -1,7 +1,5 @@
 # Fungible Token Bridging Models
 
-
-
 Celer cBridge supports two fungible token bridging models:
 
 * **xAsset, the canonical mapping bridge:** This model is intended for a token that needs to be bridged from its original source chain, chain A, to a new chain, chain B, when it has not yet been deployed on chain B. Celer cBridge will create a mapped version of the token on chain B via a lock-and-mint model.\

@@ -2,7 +2,7 @@
 
 * [👋 Welcome to cBridge](README.md)
 
-## Introduction
+# Introduction
 
 * [Architectural Benefits](introduction/architectural-benefits.md)
 * [State Guardian Network](introduction/state-guardian-network.md)
@@ -12,7 +12,7 @@
 * [Fungible Token Bridging Models](introduction/fungible-token-bridging-models.md)
 * [cBridge Security](introduction/cbridge-security.md)
 
-## Tutorial
+# Tutorial
 
 * [Cross-chain Transfer](tutorial/cross-chain-transfer.md)
 * [LP Guide](tutorial/lp-guide.md)
@@ -24,7 +24,7 @@
 * [Flow Cadence Bridging Guide](tutorial/flow-cadence-bridging-guide.md)
 * [Flow EVM Bridging Guide](tutorial/flow-evm-bridging-guide.md)
 
-## Developer
+# Developer
 
 * [Circle Cross-chain USDC Transfer Protocol(CCTP)](developer/circle-cross-chain-usdc-transfer-protocol-cctp.md)
 * [cBridge SDK](developer/cbridge-sdk.md)
@@ -61,16 +61,16 @@
   * [Contract: Aptos Vault Mint Token Submission](developer/api-reference/contract-aptos-vault-mint-token-submission.md)
   * [Contract: Aptos PegBridge Burn Token Submission](developer/api-reference/contract-aptos-pegbridge-burn-token-submission.md)
 
-## NFT Bridge
+# NFT Bridge
 
 * [Introduction](nft-bridge/introduction.md)
 * [NFT Bridge Fee](nft-bridge/nft-bridge-fee.md)
 
-## List Your Tokens
+# List Your Tokens
 
 * [Simple Listing Process](list-your-tokens/simple-listing-process.md)
 
-## Reference
+# Reference
 
 * [FAQ](reference/faq.md)
 * [Audit Reports](reference/audit-reports.md)

@@ -1,6 +1,3 @@
----
-description: Submit burn transaction from Aptos chain
----
 
 # Contract: Aptos PegBridge Burn Token Submission
 

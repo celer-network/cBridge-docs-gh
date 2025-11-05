@@ -1,6 +1,3 @@
----
-description: Get transfer status from cBridge gateway
----
 
 # Gateway: GetTransferStatus
 
@@ -28,8 +25,8 @@ For example, if the "status" is 6 and the "refund\_reason" is 4, we know this tx
 | ---------------------------------------------- | ------ | ----------- |
 | transfer\_id<mark style="color:red;">\*</mark> | String |             |
 
-{% tabs %}
-{% tab title="200: OK " %}
+
+
 ```javascript
 {
   "err": null,
@@ -47,8 +44,8 @@ For example, if the "status" is 6 and the "refund\_reason" is 4, we know this tx
   "dst_block_tx_link": "https://arbiscan.io/tx/0xe73db1fff7407a72d4755cd52252d29afd2e5326b755725df56befba4ff7594b"
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ### GRPC-Web API
 
@@ -97,16 +94,16 @@ const response = await client.getTransferStatus((request, null);
 
 <table><thead><tr><th>Type</th><th>Description</th><th>Code</th><th data-hidden></th></tr></thead><tbody><tr><td>UNKNOWN</td><td>Placeholder</td><td>0</td><td></td></tr><tr><td>OK_TO_RELAY ​  ​  ​  ​  ​  ​  ​  ​ </td><td><mark style="color:blue;">TRANSFER_WAITING_FOR_SGN_CONFIRMATION</mark></td><td>1</td><td></td></tr><tr><td>SUCCESS</td><td>Transfer success</td><td>2</td><td></td></tr><tr><td><mark style="color:red;">BAD_LIQUIDITY</mark></td><td>Not enough liquidity</td><td>3</td><td></td></tr><tr><td><mark style="color:red;">BAD_SLIPPAGE</mark></td><td>Slippage is too low</td><td>4</td><td></td></tr><tr><td><mark style="color:red;">BAD_TOKEN</mark></td><td>not supported token or token amount not available</td><td>5</td><td></td></tr><tr><td>REFUND_REQUESTED</td><td>refund started</td><td>6</td><td></td></tr><tr><td>REFUND_DONE</td><td>refund finished</td><td>7</td><td></td></tr><tr><td><mark style="color:red;">BAD_XFER_DISABLED</mark></td><td>transfer for this token is disabled</td><td>8</td><td></td></tr><tr><td><mark style="color:red;">BAD_DEST_CHAIN</mark></td><td>not supported destination chain</td><td>9</td><td></td></tr></tbody></table>
 
-{% hint style="info" %}
+> **Note:** 
 We should focus on status types with <mark style="color:red;">BAD</mark> prefix, it shows the error reason for failed transfer transaction. Other status indicates normal transaction flow.
-{% endhint %}
 
-{% tabs %}
-{% tab title="JavaScript" %}
+
+
+
 ```javascript
 /// Code Sample
 
 const statusRes = await getTransferStatus({ transfer_id: transferId }
 ```
-{% endtab %}
-{% endtabs %}
+
+

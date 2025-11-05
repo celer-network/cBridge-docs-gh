@@ -1,14 +1,9 @@
----
-description: >-
-  Lock user's assets into cBridge contract, mint corresponding tokens to
-  receiver which address can be any length
----
 
 # Contract: TransferAgent Mint Token Submission
 
-{% hint style="warning" %}
+> **Note:** 
 TransferAgent transfer is not recommended if receiver's wallet address is no more than 20 bytes
-{% endhint %}
+
 
 ## Implementation <a href="#implementation" id="implementation"></a>
 

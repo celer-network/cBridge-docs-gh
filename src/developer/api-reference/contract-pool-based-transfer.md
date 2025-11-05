@@ -1,9 +1,3 @@
----
-description: >-
-  Trigger cBridge contract `send` function to move user's assets to cBridge
-  contract on source chain. Then cBridge gateway and Celer SGN will send assets
-  to the user's asset on the destination chain
----
 
 # Contract: Pool-Based Transfer
 
@@ -59,13 +53,13 @@ const transferTx = await transactor(
 | nonce                    | BigNumber | Current timestamp                                                                      |
 | max\_slippage            | BigNumber | Use the value given by [amount estimation](gateway-estimateamt.md#response-parameters) |
 
-{% hint style="warning" %}
+> **Note:** 
 If you want to use a max\_slippage with your own calculation, please make sure it is not less than [minimalMaxSlippage](https://github.com/celer-network/cBridge-typescript-client/blob/c434598005a44334bdb6fa22979da8b253eeaa86/contract/Bridge.d.ts#L769) given by cBridge contract. Otherwise, the transaction will fail.&#x20;
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **Note:** 
 If `receiver` is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing `fallback` / `receive` functions.
-{% endhint %}
+
 
 ### TransferId Generation
 

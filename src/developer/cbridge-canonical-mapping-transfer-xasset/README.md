@@ -21,9 +21,9 @@ The followings are used to describe cBridge transfer flow
 
 > A user submit on-chain burn/withdraw request to the PeggedTokenBridge contract on pegged chain. Then user's pegged tokens will be moved and burnt in the PeggedTokenBridge contract. Celer SGN will coordinate original tokens unlock and send back to user's wallet address in OriginalTokenVault bridge on source chain.
 
-{% hint style="warning" %}
+> **Note:** 
 During the communication between you and cBridge gateway, you need to indicate it is a mint\&burn transfer flow. Otherwise, cBridge gateway will treat it as a general pool-based transfer and may lead to unexpected error
-{% endhint %}
+
 
 ```javascript
 // By refering pegged_pair_configs, we can determine whether 

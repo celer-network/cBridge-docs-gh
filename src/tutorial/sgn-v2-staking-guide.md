@@ -70,8 +70,6 @@ Celer cBridge cross-chain transaction fee earnings come from three sources, the 
 
 2.To claim fee rewards on a single chain, click "Claim" next to a single chain.
 
-
-
 ## Withdraw Your Stakes From SGN
 
 To withdraw your stakes, you need to first unbond your stakes from the delegator, and wait for a 7-day unbonding process. Once stakes are unbonded, they can be withdrawn.

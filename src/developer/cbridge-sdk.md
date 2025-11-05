@@ -31,29 +31,29 @@ It's highly recommended to communicate with cBridge gateway by using grpc-web.
 2. Inside cBridge gateway, there are some post APIs needing serialized byteArray as input. It takes some steps to prepare format accepted request information. Just in case you prefer RESTful api request, we will provide some examples for you accordingly
 3. Since cBridge iterates frequently, the best way to keep everything updated is using grpc. You can always check the latest grpc generated files and keep in touch with the newest cBridge gateway
 
-{% hint style="info" %}
+> **Note:** 
 <mark style="color:orange;">You can always use REST apis when communicating with cBridge gateway. We will provide examples and details in each api reference.</mark>
-{% endhint %}
+
 
 ### 1. Install the [grpc-web](https://github.com/grpc/grpc-web)&#x20;
 
 To begin development with cBridge SDK, each developer needs to install grpc-web for cBridge gateway communication&#x20;
 
-{% tabs %}
-{% tab title="yarn" %}
+
+
 ```javascript
 // Install via yarn
 yarn add grpc-web
 ```
-{% endtab %}
 
-{% tab title="npm" %}
+
+
 ```javascript
 // Install via npm
 npm install grpc-web
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ### 2. Download cBridge type-script client and contract&#x20;
 
@@ -84,9 +84,9 @@ const response = await client.getTransferConfigs(request, null);
 
 Once you have integrated cBridge SDK into your project, dive into the specifics of each API by checking out our complete documentation.
 
-{% content-ref url="api-reference/" %}
+[Link](api-reference/)
 [api-reference](api-reference/)
-{% endcontent-ref %}
+
 
 ## Need help? <a href="#need-help" id="need-help"></a>
 

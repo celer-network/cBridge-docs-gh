@@ -1,14 +1,9 @@
----
-description: >-
-  Burn canonical token on source chain and unlock user's assets on destination
-  chain
----
 
 # Contract: TransferAgent Burn Token Submission
 
-{% hint style="warning" %}
+> **Note:** 
 TransferAgent transfer is not recommended if receiver's wallet address is no more than 20 bytes
-{% endhint %}
+
 
 ## Implementation <a href="#implementation" id="implementation"></a>
 

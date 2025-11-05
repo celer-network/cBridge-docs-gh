@@ -1,9 +1,3 @@
----
-description: >-
-  Get refund transaction info from cBridge gateway and submit the transaction
-  on-chain. Then cBridge contract will transfer corresponding assets back to
-  user's address on source chain
----
 
 # Contract: Pool-Based Transfer Refund
 
@@ -26,12 +20,12 @@ All information is given by cBridge gateway in [getTransferStatus response](gate
 | signers | Array\<String>    | signers      |
 | powers  | Array\<BigNumber> | powers       |
 
-{% hint style="warning" %}
+> **Note:** 
 Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample
-{% endhint %}
 
-{% tabs %}
-{% tab title="JavaScript" %}
+
+
+
 ```javascript
 import { base64, getAddress, hexlify } from "ethers/lib/utils";
 
@@ -51,8 +45,8 @@ const powers = _powers.map(item => {
     return base64.decode(item);
 });
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ## Response
 

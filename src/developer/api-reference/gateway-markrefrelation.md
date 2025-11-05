@@ -1,8 +1,3 @@
----
-description: >-
-  Mark the transfer with your ref code after you submit on-chain transaction
-  successfully.
----
 
 # Gateway: MarkRefRelation
 
@@ -55,9 +50,9 @@ Since there are different types of transfer provided by cBridge, you should use 
 * [Mint Token Transfer Id Generation](contract-mint-canonical-token-originaltokenvault.md#transferid-generation)
 * [Burn Token Transfer Id Generation](contract-burn-canonical-token-peggedtokenbridge.md#transferid-generation)
 
-{% hint style="warning" %}
+> **Note:** 
 The best practice for markRefRelation is notifying cBridge gateway after on-chain transaction has been submitted.&#x20;
-{% endhint %}
+
 
 ## Response <a href="#request-parameters-1" id="request-parameters-1"></a>
 

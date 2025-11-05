@@ -1,6 +1,3 @@
----
-description: Submit deposit transaction from Aptos chain
----
 
 # Contract: Aptos Vault Mint Token Submission
 

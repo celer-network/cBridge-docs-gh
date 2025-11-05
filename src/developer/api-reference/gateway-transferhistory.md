@@ -1,6 +1,3 @@
----
-description: Get list of user's transfer history
----
 
 # Gateway: TransferHistory
 
@@ -22,8 +19,8 @@ Here is a request sample:
 | next\_page\_token                            | String     | Timestamp                                        |
 | page\_size<mark style="color:red;">\*</mark> | Int        | size for history items, should be greater than 0 |
 
-{% tabs %}
-{% tab title="200: OK " %}
+
+
 ```javascript
 {
   "err": null,
@@ -33,8 +30,8 @@ Here is a request sample:
   "current_size": "0"
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ### GRPC-Web API
 
@@ -65,9 +62,9 @@ const response = await client.transferHistory(request, null);
 | page\_size        | Number         | Size for history items, should be greater than 0. Otherwise, gateway will return an empty list |
 | acct\_addr        | Array\<String> | User's wallet addresses                                                                        |
 
-{% hint style="info" %}
+> **Note:** 
 To get the latest histories, use empty string as next\_page\_token. Otherwise, use value given by response.
-{% endhint %}
+
 
 ## Response Parameters
 
@@ -77,9 +74,9 @@ To get the latest histories, use empty string as next\_page\_token. Otherwise, u
 | next\_page\_token   | String                  |             |
 | current\_page\_size | Number                  |             |
 
-{% hint style="info" %}
+> **Note:** 
 If current\_page\_size in response is smaller than page\_size in request, it means list has come to an end/
-{% endhint %}
+
 
 ### TransferHistory
 

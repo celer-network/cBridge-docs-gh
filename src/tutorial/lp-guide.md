@@ -36,9 +36,9 @@ Note that your liquidity may be moved to other chains as users make cross-chain 
 
 ### Earn Transaction Fees & Farming Rewards
 
-{% hint style="info" %}
+> **Note:** 
 Screenshots used in this tutorial are from cBridge testnet.
-{% endhint %}
+
 
 Supplying liquidity in cBridge comes with the benefits of liquidity fee earnings and farming rewards.
 

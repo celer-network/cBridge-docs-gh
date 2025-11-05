@@ -1,8 +1,3 @@
----
-description: >-
-  In this tutorial, we will guide you through the process of making a
-  cross-chain transfer from BNB Chain or Ethereum to Aptos.
----
 
 # Aptos Bridging Guide
 
@@ -14,7 +9,7 @@ Before you start transferring assets via cBridge, you need to connect wallet fir
 
 1\. Click "Connect Wallet", and you will be prompted to select a wallet. (cBridge currently supports MetaMask, TokenPocket, Coinbase Wallet, WalletConnect, and Clover on desktop browsers).
 
-<figure><img src="../.gitbook/assets/1.png" alt=""><figcaption></figcaption></figure>
+<img src="../.gitbook/assets/1.png" alt=""><figcaption></figcaption>
 
 2\. Select “MetaMask”.
 
@@ -22,7 +17,7 @@ Before you start transferring assets via cBridge, you need to connect wallet fir
 
 3\. Click "Connect your Aptos wallet to receive the funds", and you will be prompted to select a wallet. (cBridge currently supports Petra, Blocto, Martian, BitKeep, and Fewcha wallets for Aptos).
 
-<figure><img src="../.gitbook/assets/3 (1).png" alt=""><figcaption></figcaption></figure>
+<img src="../.gitbook/assets/3 (1).png" alt=""><figcaption></figcaption>
 
 ![](../.gitbook/assets/4.png)
 
@@ -86,9 +81,9 @@ Note: You need to claim first to receive the token on Aptos. **You only need to 
 
 If you close this window without claiming $BNB, you can also Claim in cBridge History section.
 
-<figure><img src="../.gitbook/assets/截屏2023-12-15 17.19.23.png" alt=""><figcaption></figcaption></figure>
+<img src="../.gitbook/assets/截屏2023-12-15 17.19.23.png" alt=""><figcaption></figcaption>
 
-<figure><img src="../.gitbook/assets/截屏2023-12-15 17.20.33 (1).png" alt=""><figcaption></figcaption></figure>
+<img src="../.gitbook/assets/截屏2023-12-15 17.20.33 (1).png" alt=""><figcaption></figcaption>
 
 8\. Click “Approve” and you will see the Transfer Completed popup.
 
@@ -105,8 +100,6 @@ If you close this window without claiming $BNB, you can also Claim in cBridge Hi
 ![](../.gitbook/assets/222.png)
 
 ![](../.gitbook/assets/26.png)
-
-
 
 ## Register Token in Aptos Wallet (If Need)
 

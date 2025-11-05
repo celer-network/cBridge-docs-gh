@@ -2,7 +2,6 @@
 
 \
 
-
 ![](https://lh5.googleusercontent.com/JF9gj9sNjs_BHYAX6npV9K3OJo-R4xu1LWAymN9fzYcY7Xx5Y-tnVMU34CSP1s4a2xS2jw7DQRD_8uYSVTj142fSKGlezzk3uKpscd4cYNVoP8_TDMXTJd_RybVtyS0VrnCAAg_j=s0)
 
 ### **Provide liquidity without running a cBridge node**

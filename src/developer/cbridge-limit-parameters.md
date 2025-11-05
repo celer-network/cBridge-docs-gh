@@ -10,7 +10,7 @@ The sending amount range is <mark style="color:red;">(minSend, maxSend]</mark>, 
 
 The screenshot is an example to get the USDC minSend Value on Ethereum.
 
-<div align="center" data-full-width="true"><figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption><p>Example of getting the USDC minSend Value on Ethereum</p></figcaption></figure></div>
+<div align="center" data-full-width="true"><img src="../.gitbook/assets/image (35).png" alt=""><figcaption><p>Example of getting the USDC minSend Value on Ethereum</p></figcaption></div>
 
 Note if the transfer token is ETH, use the WETH token address as the query key.
 
@@ -32,9 +32,9 @@ Error Message:
 
 You can transfer up to {`remainning_amount`} {`token_symbol`} at this moment. You may reduce your transfer amount. the `remainning_amount` = `pool` -  `current volume`
 
-{% hint style="info" %}
+> **Note:** 
 (Aside) The pool cap limit value can be read from the `inbound_lmt` field in the [configuration](https://cbridge-prod2.celer.app/v1/getTransferConfigsForAll) file.
-{% endhint %}
+
 
 ### Destination Chain
 
@@ -65,5 +65,5 @@ require(volume <= cap, "volume exceeds cap");
 
 You can obtain the `epochVolumeCaps` , `lastOpTimestamps`, `epochLength` and corresponding token `epochVolumes` from the [VolumeControl](https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/safeguard/VolumeControl.sol) Contract, which has been implemented by the Bridge Contract. The accumulated volume in this period must be lower than the value specified by the "`epochVolumeCaps`".&#x20;
 
-<div align="center"><figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption><p>Example of getting epochVolumeCaps from Ethereum pool.</p></figcaption></figure></div>
+<div align="center"><img src="../.gitbook/assets/image (36).png" alt=""><figcaption><p>Example of getting epochVolumeCaps from Ethereum pool.</p></figcaption></div>
 

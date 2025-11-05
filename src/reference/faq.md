@@ -1,8 +1,8 @@
 # FAQ
 
-{% hint style="info" %}
+> **Note:** 
 Didn't find an answer? Join the [community Discord](https://discord.gg/Trhab5w) or [Telegram](https://t.me/celernetwork) to get support.
-{% endhint %}
+
 
 ### Bridge Fee
 
@@ -97,8 +97,6 @@ On the “Liquidity” page, you will see a green “Farming” mark if there is
 **Please Note:** Your liquidity may be moved around to different chains as users make cross-chain transfers with your liquidity. As a result, your enrolled liquidity in each mining session might change as well. For example, suppose there are two mining sessions, one for the USDT pool on BNB Chain, with an APY of 50%; the other is for the USDT pool on Polygon, with an APY of 30%. Initially, you added 1,000 USDT liquidity to BNB Chain targeting the 50% APY.
 
 Later, as users conduct cross-chain transfers, your liquidity distribution becomes 600 USDT on BNB Chain and 400 USDT on Polygon. In this case, the 600 USDT will automatically enroll in the 50% APY mining session and 400 USDT will enroll in the 30% APY mining session. A strategy for LPs to maximize their farming yield is to rebalance the liquidity across different chains themselves.
-
-
 
 ### The SGN & CELR token
 

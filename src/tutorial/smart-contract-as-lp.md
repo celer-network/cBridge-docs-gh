@@ -2,9 +2,9 @@
 
 The liquidity pool mode of cBridge supports using a smart contract (eg. a multi-sig wallet) to provide liquidity, with the caveat of having to follow a special process to withdraw liquidity. This tutorial describes the process of adding and withdrawing liquidity using smart contracts.
 
-{% hint style="info" %}
+> **Note:** 
 **This feature has only been released on a limited number of chains.**&#x20;
-{% endhint %}
+
 
 <mark style="color:red;">**Note: Before adding any liquidity to cBridge from a smart contract, make sure you have read this tutorial and are comfortable with following the technical instructions.**</mark>
 
@@ -137,9 +137,9 @@ Once you have received a response with status `2`, prepare the input parameters 
 
 The `wd_onchain` you saved corresponds to `_wdmsg`. Go to [base64-to-hex](https://cryptii.com/pipes/base64-to-hex), paste `wd_onchain` on the left, switch `GROUP BY` to `NONE` on the right, add a hex prefix `0x` to the result on the right, and you will get `_wdmsg`.
 
-{% hint style="info" %}
+> **Note:** 
 For `sorted_sigs`, `signers` and `powers`, do not change the order of parameters within the arrays.
-{% endhint %}
+
 
 `sorted_sigs` corresponds to `_sigs`. Convert the signature strings in `sorted_sigs`one by one using the same way as with `wd_onchain`, and put all `0x` prefixed strings in an array `[]` to get `_sigs`.
 

@@ -4,9 +4,7 @@ For Circle Cross-Chain USDC Protocol supported chains, the USDC flow is going th
 
 The following content is an integration tutorial from frontend perspective.
 
-<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption><p>CCPT flow</p></figcaption></figure>
-
-
+<img src="../.gitbook/assets/image (41).png" alt=""><figcaption><p>CCPT flow</p></figcaption>
 
 ## Proxy Contracts
 
@@ -28,8 +26,6 @@ amount:  Your bridging amount with decimal, for example, 3000000 = 30USDC
 
 dstChid: The destination chain you wanna send, in this case is 43114
 
-
-
 **Outputs**
 
 Output data is an array of fees `[fee, txFee, percFe]`.
@@ -42,13 +38,9 @@ Output data is an array of fees `[fee, txFee, percFe]`.
 
 For this bridging mode, the bridge rate is 1.
 
-
-
 ## Bridge by depositForBurn
 
 From the front-end side, lock the USDC to source proxy contract by the method [depositForBurn](https://etherscan.io/address/0x6065a982f04f759b7d2d042d2864e569fad84214#writeContract#F4). Circle attestation will bridge the assets to the destination chain in a trustless way. For more details refer to this:[https://developers.circle.com/stablecoin/docs/cctp-protocol-contract](https://developers.circle.com/stablecoin/docs/cctp-protocol-contract)
-
-
 
 **Contract Parameters**
 
@@ -64,8 +56,6 @@ Once this depositForBurn happened on the source chain, you can get the source ch
 ```
 event Deposited(address sender, bytes32 recipient, uint64 dstChid, uint256 amount, uint256 txFee, uint256 percFee, uint64 nonce);
 ```
-
-
 
 ## Searching destination transaction status
 
@@ -89,13 +79,7 @@ getTransferId(): string {
 
 **API reference**
 
-{% content-ref url="api-reference/gateway-gettransferstatus.md" %}
+[Link](api-reference/gateway-gettransferstatus.md)
 [gateway-gettransferstatus.md](api-reference/gateway-gettransferstatus.md)
-{% endcontent-ref %}
-
-
-
-
-
 
 

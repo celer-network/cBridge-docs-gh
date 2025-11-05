@@ -1,6 +1,3 @@
----
-description: 'Contract: Burn pegged tokens and unlock original token from cBridge'
----
 
 # Contract: Burn Canonical Token (PeggedTokenBridgeV2)
 
@@ -27,9 +24,9 @@ peggedTokenBridge!.burn(
 | withdraw\_account  | String  | User's wallet address                    |
 | nonce              | UInt64  | Current timestamp                        |
 
-{% hint style="warning" %}
+> **Note:** 
 If `withdraw_account` is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing `fallback` / `receive` functions.
-{% endhint %}
+
 
 ### TransferId Generation <a href="#transferid-generation" id="transferid-generation"></a>
 
@@ -60,9 +57,9 @@ const burn_id = ethers.utils.solidityKeccak256(
 )
 ```
 
-{% hint style="warning" %}
+> **Note:** 
 Please be aware that transfer id generation parameters are different between **PeggedTokenBridge** and **PeggedTokenBridgeV2**
-{% endhint %}
+
 
 ## Response <a href="#request-parameters-1" id="request-parameters-1"></a>
 

@@ -1,8 +1,3 @@
----
-description: >-
-  Lock user's assets into cBridge and mint corresponding token on the
-  destination chain
----
 
 # Contract: Mint Canonical Token(OriginalTokenVaultV2)
 
@@ -30,9 +25,9 @@ originalTokenVaultV2!.deposit(
 | nonce           | UInt64  | Current timestamp                  |
 | mint\_account   | String  | User's wallet address              |
 
-{% hint style="warning" %}
+> **Note:** 
 If the `mint_account` is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing `fallback` / `receive` functions.
-{% endhint %}
+
 
 ### TransferId Generation
 

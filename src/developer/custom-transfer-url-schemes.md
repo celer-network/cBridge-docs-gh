@@ -1,9 +1,3 @@
----
-description: >-
-  Custom transfer url schemes are useful for predefined token transfer from
-  specific chain to another. Here is a simple flow to build a custom cBridge
-  transfer url
----
 
 # Custom Transfer URL Schemes
 

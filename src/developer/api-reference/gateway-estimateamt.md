@@ -1,6 +1,3 @@
----
-description: Get estimation for the user's transfer request.
----
 
 # Gateway: EstimateAmt
 
@@ -26,8 +23,8 @@ Here is a sample request for estimateAmt:
 | slippage\_tolerance<mark style="color:red;">\*</mark> | Number  | value between 1 and 1M - 1, see details below                                                                                                                        |
 | is\_pegged                                            | Bool    | set true if transfer pegged token                                                                                                                                    |
 
-{% tabs %}
-{% tab title="200: OK " %}
+
+
 ```javascript
 {
   "err": null,
@@ -41,8 +38,8 @@ Here is a sample request for estimateAmt:
   "drop_gas_amt": "0"
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ### GRPC-Web API
 
@@ -82,7 +79,7 @@ const res = await client.estimateAmt(estimateRequest, null);
 | amt                           | String | Token amount to be transfered. Token's decimal should be used here. For example, if the user wants to transfer 1 tokenA and A's decimal is 4, then amt should be 10000 |
 | is\_pegged                    |        | Used for pegged token transfer only                                                                                                                                    |
 
-{% hint style="info" %}
+> **Note:** 
 Which value is suitable for <mark style="color:red;">slippage\_tolerance</mark>?
 
 cBridge gateway uses <mark style="color:orange;">slippage\_tolerance\_rate</mark> to represent user's slippage for on-chain transaction. The range of <mark style="color:orange;">slippage\_tolerance\_rate</mark> is from \[0, 1)
@@ -94,11 +91,11 @@ The calculation formula between <mark style="color:red;">slippage\_tolerance</ma
 Hence, if the user sets slippage\_tolerance with 0.05%, <mark style="color:red;">slippage\_tolerance</mark> in the request will be 0.05% \* 1M = 500
 
 Moreover, if the user sets slippage\_tolerance with 0.050123%, the calculation will lead to 0.050123% \* 1M = 501.23. However, gateway will only accept <mark style="color:green;">integer</mark> as <mark style="color:red;">slippage\_tolerance.</mark> The final value should be <mark style="color:red;">501</mark>
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **Note:** 
 You need to find out whether this transfer is used for pegged token according to [PeggedPairConfigs](gateway-gettransferconfigsforall.md#peggedpairconfig). Moreover, slippage will not be effective if is\_pagged is true
-{% endhint %}
+
 
 ## Response Parameters <a href="#response-parameters" id="response-parameters"></a>
 
@@ -112,7 +109,7 @@ You need to find out whether this transfer is used for pegged token according to
 | max\_slippage                           | Number | slippage will be used to submit on-chain transaction, see below for calculation detail. <mark style="color:red;">used for xLiquidity transfer only</mark> |
 | estimated\_receive\_amt                 | String | receiving amount estimation on destination chain                                                                                                          |
 
-{% hint style="info" %}
+> **Note:** 
 How to calculate max\_slippage?
 
 There are several factors influencing the final value for max\_slippage, all of them are inside the response. Since we cannot guarantee user receiving more tokens on destination chain, there is slippage adjustment in the end.
@@ -121,25 +118,25 @@ There are several factors influencing the final value for max\_slippage, all of 
 2. estimate\_min\_dst\_amt = estimate\_dst\_amt \* (1 - slippage\_tolerance\_rate) - base\_fee - perc\_fee
 3. max\_slippage\_rate = 1 - estimate\_min\_dst\_amt / user\_transfer\_amount\_on\_src\_chain
 4. max\_slippage = max(max\_slippage\_rate \* 1M, minimalMaxSlippage)
-{% endhint %}
 
-{% hint style="info" %}
+
+> **Note:** 
 Minimum receiving amount calculation
 
 amount = eq\_value\_token\_amt  \*  (1 - max\_slippage/1M)
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **Note:** 
 The on-chain send transaction failed _**mostly when slippage is too small to be processed by cBridge system.**_&#x20;
 
 To avoid the potential on-chain failure and waste of gas, we recommend you compare max\_slippage with minimalMaxSlippage on cBridge contract before sending on-chain  transaction. If max\_slippage is less than minimalMaxSlippage, guide user increasing input value slippage\_tolerance.
 
 Moreover, since max\_slippage, bridge\_rate, perc\_fee and base\_fee may change when user interacting with your application, we should get the lastest estimation before final submit to avoid [on-chain send](contract-pool-based-transfer.md) failure.
-{% endhint %}
 
-{% hint style="danger" %}
+
+> **Note:** 
 The cross-chain transfer is accepted only. if src\_chain\_id is the same as dst\_chain\_id, it may lead to an error
-{% endhint %}
+
 
 ## Error handling
 
@@ -174,13 +171,13 @@ To provide a better user experience, cBridge has a request to indicate user how 
 | src\_chain\_id<mark style="color:red;">\*</mark> | Number | source chain id      |
 | dst\_chain\_id<mark style="color:red;">\*</mark> | Number | destination chain id |
 
-{% tabs %}
-{% tab title="200: OK " %}
+
+
 ```javascript
 {
   "err": null,
   "median_transfer_latency_in_second": 325.818221
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+

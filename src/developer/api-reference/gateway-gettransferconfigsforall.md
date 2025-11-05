@@ -1,6 +1,3 @@
----
-description: Get transfer configs for cBridge transfer functionality
----
 
 # Gateway: GetTransferConfigsForAll
 
@@ -12,15 +9,15 @@ description: Get transfer configs for cBridge transfer functionality
 
 By using this method, you can find chains' and tokens' information for cBridge testnet transfer, you can use cBridge production endpoint for mainnet configs
 
-{% tabs %}
-{% tab title="200: OK " %}
+
+
 ```javascript
 {
     // Response
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+
 
 ## Request Parameters
 
@@ -71,11 +68,9 @@ None
 | decimal         | Number  | token decimal           |
 | xfer\_disabled  | Boolean | token transfer disabled |
 
-
-
-{% hint style="warning" %}
+> **Note:** 
 If transfer\_disabled or xfer\_disabled is true, we cannot transfer the token on the corresponding chain
-{% endhint %}
+
 
 ### PeggedPairConfig
 
@@ -90,7 +85,7 @@ If transfer\_disabled or xfer\_disabled is true, we cannot transfer the token on
 | vault\_version                  | Number                                                     | 0 for [OriginalTokenVault](https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVault.sol), 2 for [OriginalTokenVaultV2](https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVaultV2.sol) |
 | bridge\_version                 | Number                                                     | 0 for [PeggedTokenBridge](https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridge.sol), 2 for [PeggedTokenBridgeV2](https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridgeV2.sol)     |
 
-{% hint style="warning" %}
+> **Note:** 
 All data inside the configs should not be edited, otherwise it may lead to failure.
-{% endhint %}
+
 
