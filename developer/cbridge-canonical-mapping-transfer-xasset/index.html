@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -196,9 +196,10 @@
 <blockquote>
 <p>A user submit on-chain burn/withdraw request to the PeggedTokenBridge contract on pegged chain. Then user’s pegged tokens will be moved and burnt in the PeggedTokenBridge contract. Celer SGN will coordinate original tokens unlock and send back to user’s wallet address in OriginalTokenVault bridge on source chain.</p>
 </blockquote>
-<p>{% hint style=“warning” %}
-During the communication between you and cBridge gateway, you need to indicate it is a mint&amp;burn transfer flow. Otherwise, cBridge gateway will treat it as a general pool-based transfer and may lead to unexpected error
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+During the communication between you and cBridge gateway, you need to indicate it is a mint&amp;burn transfer flow. Otherwise, cBridge gateway will treat it as a general pool-based transfer and may lead to unexpected error</p>
+</blockquote>
 <pre><code class="language-javascript">// By refering pegged_pair_configs, we can determine whether 
 // it is a pegged transfer. 
 Scenario A:

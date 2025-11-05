@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,43 +177,35 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="api-reference"><a class="header" href="#api-reference">API Reference</a></h1>
-<p>{% hint style=“info” %}
-All APIs will have a prefix to indicate whether it is a cBridge gateway function or a cBridge contract on-chain function.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+All APIs will have a prefix to indicate whether it is a cBridge gateway function or a cBridge contract on-chain function.</p>
+</blockquote>
 <h3 id="get-transfer-configs"><a class="header" href="#get-transfer-configs">Get Transfer Configs</a></h3>
 <p>Get chains and tokens info supported by cBridge.</p>
-<p>{% content-ref url=“gateway-gettransferconfigsforall.md” %}
-<a href="gateway-gettransferconfigsforall.html">gateway-gettransferconfigsforall.md</a>
-{% endcontent-ref %}</p>
+<p><a href="gateway-gettransferconfigsforall.html">Link</a>
+<a href="gateway-gettransferconfigsforall.html">gateway-gettransferconfigsforall.md</a></p>
 <h3 id="transfer-flow"><a class="header" href="#transfer-flow">Transfer Flow</a></h3>
 <p>When all needed information is ready, make an <em><mark style="color:purple;"><strong>estimation</strong></mark></em> for this transfer first. Then, submit an on-chain <em><mark style="color:blue;"><strong>send</strong></mark></em> transaction. Poll <em><mark style="color:red;"><strong>getTransferStatus</strong></mark></em> for this transaction until the transfer is complete or needs a refund.</p>
-<p>{% content-ref url=“gateway-estimateamt.md” %}
-<a href="gateway-estimateamt.html">gateway-estimateamt.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-pool-based-transfer.md” %}
-<a href="contract-pool-based-transfer.html">contract-pool-based-transfer.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“gateway-gettransferstatus.md” %}
-<a href="gateway-gettransferstatus.html">gateway-gettransferstatus.md</a>
-{% endcontent-ref %}</p>
+<p><a href="gateway-estimateamt.html">Link</a>
+<a href="gateway-estimateamt.html">gateway-estimateamt.md</a></p>
+<p><a href="contract-pool-based-transfer.html">Link</a>
+<a href="contract-pool-based-transfer.html">contract-pool-based-transfer.md</a></p>
+<p><a href="gateway-gettransferstatus.html">Link</a>
+<a href="gateway-gettransferstatus.html">gateway-gettransferstatus.md</a></p>
 <h3 id="transfer-refund-flow"><a class="header" href="#transfer-refund-flow">Transfer Refund Flow</a></h3>
 <p>When the transfer status is <mark style="color:yellow;">TRANSFER_TO_BE_REFUNDED</mark>, cBridge gateway will prepare on-chain refund transaction info automatically within several minutes. Polling getTransferStatus and submit on-chain transaction based on failed transfer type. </p>
-<p>{% content-ref url=“gateway-gettransferstatus.md” %}
-<a href="gateway-gettransferstatus.html">gateway-gettransferstatus.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-pool-based-transfer-refund.md” %}
-<a href="contract-pool-based-transfer-refund.html">contract-pool-based-transfer-refund.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-mint-canonical-token-transfer-refund.md” %}
-<a href="contract-mint-canonical-token-transfer-refund.html">contract-mint-canonical-token-transfer-refund.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-burn-canonical-token-transfer-refund.md” %}
-<a href="contract-burn-canonical-token-transfer-refund.html">contract-burn-canonical-token-transfer-refund.md</a>
-{% endcontent-ref %}</p>
+<p><a href="gateway-gettransferstatus.html">Link</a>
+<a href="gateway-gettransferstatus.html">gateway-gettransferstatus.md</a></p>
+<p><a href="contract-pool-based-transfer-refund.html">Link</a>
+<a href="contract-pool-based-transfer-refund.html">contract-pool-based-transfer-refund.md</a></p>
+<p><a href="contract-mint-canonical-token-transfer-refund.html">Link</a>
+<a href="contract-mint-canonical-token-transfer-refund.html">contract-mint-canonical-token-transfer-refund.md</a></p>
+<p><a href="contract-burn-canonical-token-transfer-refund.html">Link</a>
+<a href="contract-burn-canonical-token-transfer-refund.html">contract-burn-canonical-token-transfer-refund.md</a></p>
 <h3 id="transfer-history-query"><a class="header" href="#transfer-history-query">Transfer History Query</a></h3>
-<p>{% content-ref url=“gateway-transferhistory.md” %}
-<a href="gateway-transferhistory.html">gateway-transferhistory.md</a>
-{% endcontent-ref %}</p>
+<p><a href="gateway-transferhistory.html">Link</a>
+<a href="gateway-transferhistory.html">gateway-transferhistory.md</a></p>
 
                     </main>
 

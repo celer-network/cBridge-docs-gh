@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,11 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---mark-the-transfer-with-your-ref-code-after-you-submit-on-chain-transaction-successfully"><a class="header" href="#description---mark-the-transfer-with-your-ref-code-after-you-submit-on-chain-transaction-successfully">description: &gt;-
-Mark the transfer with your ref code after you submit on-chain transaction
-successfully.</a></h2>
-<h1 id="gateway-markrefrelation"><a class="header" href="#gateway-markrefrelation">Gateway: MarkRefRelation</a></h1>
+                        <h1 id="gateway-markrefrelation"><a class="header" href="#gateway-markrefrelation">Gateway: MarkRefRelation</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">Rest API <a href="#implementation" id="implementation"></a></a></h3>
 <h2 id="make-a-reference-between-transfer-transaction-with-your-ref-code"><a class="header" href="#make-a-reference-between-transfer-transaction-with-your-ref-code">Make a reference between transfer transaction with your ref code</a></h2>
 <p><mark style="color:green;"><code>POST</code></mark> <code>https://cbridge-prod2.celer.app/v2/partner/markRefRelation</code></p>
@@ -233,9 +229,10 @@ const response = await client.markRefRelation(request, null);
 <li><a href="contract-mint-canonical-token-originaltokenvault.html#transferid-generation">Mint Token Transfer Id Generation</a></li>
 <li><a href="contract-burn-canonical-token-peggedtokenbridge.html#transferid-generation">Burn Token Transfer Id Generation</a></li>
 </ul>
-<p>{% hint style=“warning” %}
-The best practice for markRefRelation is notifying cBridge gateway after on-chain transaction has been submitted. 
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+The best practice for markRefRelation is notifying cBridge gateway after on-chain transaction has been submitted. </p>
+</blockquote>
 <h2 id="response"><a class="header" href="#response">Response <a href="#request-parameters-1" id="request-parameters-1"></a></a></h2>
 <p>Since this request is notifying cBridge gateway one transfer is related to a ref code, normal response returns an empty body. </p>
 

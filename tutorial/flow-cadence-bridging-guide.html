@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,90 +176,86 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-to-flow-cadence"><a class="header" href="#description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-to-flow-cadence">description: &gt;-
-In this tutorial, we will guide you through the process of making a
-cross-chain transfer from BNB to Flow Cadence.</a></h2>
-<h1 id="flow-cadence-bridging-guide"><a class="header" href="#flow-cadence-bridging-guide">Flow Cadence Bridging Guide</a></h1>
+                        <h1 id="flow-cadence-bridging-guide"><a class="header" href="#flow-cadence-bridging-guide">Flow Cadence Bridging Guide</a></h1>
 <h2 id="connect-your-wallet"><a class="header" href="#connect-your-wallet">Connect Your Wallet</a></h2>
 <p>Before you start transferring assets via cBridge, you will need to connect your wallet first.</p>
 <p>1. Click “Connect Wallet”, and you will be prompted to select a wallet. (cBridge now supports MetaMask, TokenPocket, Coinbase Wallet, WalletConnect, and Clover on desktop browsers).</p>
-<figure><img src="../.gitbook/assets/Group 1000003508 (2).png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003508 (2).png" alt="" width="563"><figcaption></figcaption></p>
 <p>2. Select “MetaMask”.</p>
-<figure><img src="../.gitbook/assets/image (3).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/image (3).png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="3">
 <li>Click “Connect your Flow wallet to receive the funds”, and you will be prompted to select a wallet. (cBridge now supports Blocto and Flow Reference wallets for Flow Cadence).</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003508 (3).png" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (6).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003508 (3).png" alt="" width="563"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (6).png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="4">
 <li> Connect a wallet you would like to use for transfer.</li>
 </ol>
 <p>    4.1 <em><strong>Connect Blocto Wallet</strong></em>. By entering your email address, you can Sign in/ Register to your Blocto Account. After entering passcode given by Blocto, you can click confirm button to connect your Blocto wallet to cBridge.</p>
-<figure><img src="../.gitbook/assets/image (7).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (8).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (9).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (10).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/Group 1000003510.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/image (7).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (8).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (9).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (10).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/Group 1000003510.png" alt="" width="563"><figcaption></figcaption></p>
 <p>    4.2 <em><strong>Connect Flow Reference Wallet</strong></em>. cBridge website will detect whether you have installed Flow Reference Wallet. If not, you will need to install the chrome extension firstly according to the guideline and <strong>Refresh cBridge website.</strong> If Flow Reference Wallet has been installed in chrome,  you will see a prompt after selecting Flow Reference Wallet. By clicking <strong>Connect</strong> button, your Flow reference wallet is connected for cBridge transfer.</p>
-<figure><img src="../.gitbook/assets/spaces_e2ozVyumMnvf5tn0izji_uploads_aMU6S6LtCNtdOTBKG0tx_image.webp" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (15).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/spaces_e2ozVyumMnvf5tn0izji_uploads_aMU6S6LtCNtdOTBKG0tx_image.webp" alt="" width="375"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (15).png" alt="" width="188"><figcaption></figcaption></p>
 <h2 id="transfer-assets-across-chains"><a class="header" href="#transfer-assets-across-chains">Transfer Assets Across Chains</a></h2>
 <p>Let’s say, you want to transfer 11 BUSD from BNB Chain to Flow Cadence. The steps are made simple in cBridge:</p>
 <ol>
 <li>Select “BNB Chain” in the dropbox next to “From” and “Flow Cadence” in the dropbox next to “To”.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003511.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003511.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="2">
 <li>You will be prompted to switch your wallet to BNB Chain if it’s not yet connected. Enter the amount you want to send under “Send”. You should see the estimated amount you will receive under “Receive (estimated)”.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003512 (3).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003512 (3).png" alt="" width="375"><figcaption></figcaption></p>
 <p>Note that there will be a difference between the amount you send and the amount you receive, which is determined by the bridge rate and fees. For the exact definition of each item in the transaction, check the tooltips next to each of the terms.</p>
-<figure><img src="../.gitbook/assets/image (20).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/image (20).png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="3">
 <li>Note that If you transfer BUSD to Flow Cadence <strong>for the first time</strong>, you will be prompted to “Create BUSD vault in your Follow wallet” first.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003513.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003513.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="4">
 <li>Then click “Approve” on Flow Wallet.</li>
 </ol>
-<figure><img src="../.gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="5">
 <li>Then you need to “Approve BUSD”, and will be prompted to confirm on Metamask.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003513 (1).png" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (24).png" alt="" width="180"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (26).png" alt="" width="186"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003513 (1).png" alt="" width="375"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (24).png" alt="" width="180"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (26).png" alt="" width="186"><figcaption></figcaption></p>
 <ol start="6">
 <li>Click “Next” and “Approve” in each prompt and you can transfer your assets. Then, review your transfer details and click “Transfer”. You will receive a popup to confirm the transfer.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003514.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003514.png" alt="" width="375"><figcaption></figcaption></p>
 <p>Note if you have approved BUSD before, you will skip step 5 and see the below Transfer page.</p>
-<figure><img src="../.gitbook/assets/Group 1000003515.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003515.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="7">
 <li>Make a final review and click Confirm Transfer button. Then you will be prompted with a confirmation on MetaMask.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003516.png" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src="../.gitbook/assets/image (30).png" alt="" width="177"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003516.png" alt="" width="375"><figcaption></figcaption></p>
+<p><img src="../.gitbook/assets/image (30).png" alt="" width="177"><figcaption></figcaption></p>
 <ol start="8">
 <li>Click “Confirm”, and your transaction will be submitted. Please wait for a few minutes as the bridging is in progress.</li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003517.png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003517.png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="9">
 <li>You can check transaction status by clicking History button. </li>
 </ol>
-<figure><img src="../.gitbook/assets/Group 1000003518.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003518.png" alt="" width="563"><figcaption></figcaption></p>
 <ol start="10">
 <li>Here are examples of transaction statuses. When it shows <strong>Completed</strong>, it means the transaction is done and the token should be received on Flow Cadence.</li>
 </ol>
-<div align="center"><figure><img src="../.gitbook/assets/Group 1000003519.png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="center"><img src="../.gitbook/assets/Group 1000003519.png" alt="" width="563"><figcaption></figcaption></div>
 
-<figure><img src="../.gitbook/assets/Group 1000003520.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/Group 1000003520.png" alt="" width="563"><figcaption></figcaption></p>
 <ol start="10">
 <li>You can also check token in your wallet.</li>
 </ol>
-<figure><img src="../.gitbook/assets/image (34).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="../.gitbook/assets/image (34).png" alt="" width="188"><figcaption></figcaption></p>
 
                     </main>
 

@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,12 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---trigger-cbridge-contract-send-function-to-move-users-assets-to-cbridge-contract-on-source-chain-then-cbridge-gateway-and-celer-sgn-will-send-assets-to-the-users-asset-on-the-destination-chain"><a class="header" href="#description---trigger-cbridge-contract-send-function-to-move-users-assets-to-cbridge-contract-on-source-chain-then-cbridge-gateway-and-celer-sgn-will-send-assets-to-the-users-asset-on-the-destination-chain">description: &gt;-
-Trigger cBridge contract <code>send</code> function to move user’s assets to cBridge
-contract on source chain. Then cBridge gateway and Celer SGN will send assets
-to the user’s asset on the destination chain</a></h2>
-<h1 id="contract-pool-based-transfer"><a class="header" href="#contract-pool-based-transfer">Contract: Pool-Based Transfer</a></h1>
+                        <h1 id="contract-pool-based-transfer"><a class="header" href="#contract-pool-based-transfer">Contract: Pool-Based Transfer</a></h1>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Pool-based transfers are done via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol">Bridge</a> contract, specifically via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol#L56">send</a> or <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol#L79">sendNative</a> functions. For advanced users, these two functions can be called from smart contracts, but please read the <a href="../cbridge-pool-based-transfer-xliquidity/transfer-refund.html">refund process</a> before you proceed.</p>
 <p>Here is the <mark style="color:red;">abi</mark> for Bridge: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/Bridge.sol"> </a><a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/Bridge.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/Bridge.sol</a></p>
@@ -235,12 +230,14 @@ const transferTx = await transactor(
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If you want to use a max_slippage with your own calculation, please make sure it is not less than <a href="https://github.com/celer-network/cBridge-typescript-client/blob/c434598005a44334bdb6fa22979da8b253eeaa86/contract/Bridge.d.ts#L769">minimalMaxSlippage</a> given by cBridge contract. Otherwise, the transaction will fail. 
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-If <code>receiver</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If you want to use a max_slippage with your own calculation, please make sure it is not less than <a href="https://github.com/celer-network/cBridge-typescript-client/blob/c434598005a44334bdb6fa22979da8b253eeaa86/contract/Bridge.d.ts#L769">minimalMaxSlippage</a> given by cBridge contract. Otherwise, the transaction will fail. </p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+If <code>receiver</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation"><a class="header" href="#transferid-generation">TransferId Generation</a></h3>
 <p>When you submit on-chain send transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="gateway-gettransferstatus.html">getTransferStatus</a> and <a href="broken-reference">withdrawLiquidityForTransferRefund</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">const transfer_id = ethers.utils.solidityKeccak256(

@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,14 +176,11 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---burn-canonical-token-on-source-chain-and-unlock-users-assets-on-destination-chain"><a class="header" href="#description---burn-canonical-token-on-source-chain-and-unlock-users-assets-on-destination-chain">description: &gt;-
-Burn canonical token on source chain and unlock user’s assets on destination
-chain</a></h2>
-<h1 id="contract-transferagent-burn-token-submission"><a class="header" href="#contract-transferagent-burn-token-submission">Contract: TransferAgent Burn Token Submission</a></h1>
-<p>{% hint style=“warning” %}
-TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes
-{% endhint %}</p>
+                        <h1 id="contract-transferagent-burn-token-submission"><a class="header" href="#contract-transferagent-burn-token-submission">Contract: TransferAgent Burn Token Submission</a></h1>
+<blockquote>
+<p><strong>Note:</strong>
+TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes</p>
+</blockquote>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation <a href="#implementation" id="implementation"></a></a></h2>
 <p>Through TransferAgent’s transfer function, user can burn token on source chain and unlock user’s assets on destination chain. According to <a href="gateway-gettransferconfigsforall.html#peggedpairconfig">pegged_pair_config.bridge_version</a>, you should set different parameters communicating with TransferAgent contract.</p>
 <h4 id="communicate-with-peggedtokenbridge-through-transferagent-contract"><a class="header" href="#communicate-with-peggedtokenbridge-through-transferagent-contract">Communicate with PeggedTokenBridge through TransferAgent contract</a></h4>

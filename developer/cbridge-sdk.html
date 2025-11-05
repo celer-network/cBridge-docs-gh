@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -198,23 +198,18 @@
 <li>Inside cBridge gateway, there are some post APIs needing serialized byteArray as input. It takes some steps to prepare format accepted request information. Just in case you prefer RESTful api request, we will provide some examples for you accordingly</li>
 <li>Since cBridge iterates frequently, the best way to keep everything updated is using grpc. You can always check the latest grpc generated files and keep in touch with the newest cBridge gateway</li>
 </ol>
-<p>{% hint style=“info” %}
-<mark style="color:orange;">You can always use REST apis when communicating with cBridge gateway. We will provide examples and details in each api reference.</mark>
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+<mark style="color:orange;">You can always use REST apis when communicating with cBridge gateway. We will provide examples and details in each api reference.</mark></p>
+</blockquote>
 <h3 id="1-install-the-grpc-web"><a class="header" href="#1-install-the-grpc-web">1. Install the <a href="https://github.com/grpc/grpc-web">grpc-web</a> </a></h3>
 <p>To begin development with cBridge SDK, each developer needs to install grpc-web for cBridge gateway communication </p>
-<p>{% tabs %}
-{% tab title=“yarn” %}</p>
 <pre><code class="language-javascript">// Install via yarn
 yarn add grpc-web
 </code></pre>
-<p>{% endtab %}</p>
-<p>{% tab title=“npm” %}</p>
 <pre><code class="language-javascript">// Install via npm
 npm install grpc-web
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="2-download-cbridge-type-script-client-and-contract"><a class="header" href="#2-download-cbridge-type-script-client-and-contract">2. Download cBridge type-script client and contract </a></h3>
 <p>Download auto-generated protobuf files(including xxx_pb.d.ts, xxx_pb.js) in <a href="https://github.com/celer-network/cBridge-typescript-client">cBridge typescript client repo</a>. You can find all needed messages including client, request constructs and contracts there.</p>
 <h3 id="3-import-cbridge-sdk-into-your-projects"><a class="header" href="#3-import-cbridge-sdk-into-your-projects">3. Import cBridge SDK into your projects.</a></h3>
@@ -236,9 +231,8 @@ const response = await client.getTransferConfigs(request, null);
 </code></pre>
 <h2 id="api-reference"><a class="header" href="#api-reference">API Reference</a></h2>
 <p>Once you have integrated cBridge SDK into your project, dive into the specifics of each API by checking out our complete documentation.</p>
-<p>{% content-ref url=“api-reference/” %}
-<a href="api-reference/">api-reference</a>
-{% endcontent-ref %}</p>
+<p><a href="api-reference/">Link</a>
+<a href="api-reference/">api-reference</a></p>
 <h2 id="need-help"><a class="header" href="#need-help">Need help? <a href="#need-help" id="need-help"></a></a></h2>
 <p>If you’re looking for help, try join the <a href="https://discord.gg/Trhab5w">community Discord</a></p>
 

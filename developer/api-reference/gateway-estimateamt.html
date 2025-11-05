@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,9 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description-get-estimation-for-the-users-transfer-request"><a class="header" href="#description-get-estimation-for-the-users-transfer-request">description: Get estimation for the user’s transfer request.</a></h2>
-<h1 id="gateway-estimateamt"><a class="header" href="#gateway-estimateamt">Gateway: EstimateAmt</a></h1>
+                        <h1 id="gateway-estimateamt"><a class="header" href="#gateway-estimateamt">Gateway: EstimateAmt</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">REST API</a></h3>
 <h2 id="get-estimation-for-the-users-transfer-request"><a class="header" href="#get-estimation-for-the-users-transfer-request">Get estimation for the user’s transfer request</a></h2>
 <p><mark style="color:blue;"><code>GET</code></mark> <code>https://cbridge-prod2.celer.app/v2/estimateAmt</code></p>
@@ -201,8 +199,6 @@
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "eq_value_token_amt": "1000000999999999872",
@@ -215,8 +211,6 @@
   "drop_gas_amt": "0"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api"><a class="header" href="#grpc-web-api">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">// import estimateAmt request message 
 import { 
@@ -257,17 +251,19 @@ const res = await client.estimateAmt(estimateRequest, null);
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 Which value is suitable for <mark style="color:red;">slippage_tolerance</mark>?</p>
+</blockquote>
 <p>cBridge gateway uses <mark style="color:orange;">slippage_tolerance_rate</mark> to represent user’s slippage for on-chain transaction. The range of <mark style="color:orange;">slippage_tolerance_rate</mark> is from [0, 1)</p>
 <p>The calculation formula between <mark style="color:red;">slippage_tolerance</mark> and slippage_tolerance_rate is</p>
 <p><mark style="color:orange;">slippage_tolerance_rate</mark> = <mark style="color:red;">slippage_tolerance / 1M</mark></p>
 <p>Hence, if the user sets slippage_tolerance with 0.05%, <mark style="color:red;">slippage_tolerance</mark> in the request will be 0.05% * 1M = 500</p>
-<p>Moreover, if the user sets slippage_tolerance with 0.050123%, the calculation will lead to 0.050123% * 1M = 501.23. However, gateway will only accept <mark style="color:green;">integer</mark> as <mark style="color:red;">slippage_tolerance.</mark> The final value should be <mark style="color:red;">501</mark>
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-You need to find out whether this transfer is used for pegged token according to <a href="gateway-gettransferconfigsforall.html#peggedpairconfig">PeggedPairConfigs</a>. Moreover, slippage will not be effective if is_pagged is true
-{% endhint %}</p>
+<p>Moreover, if the user sets slippage_tolerance with 0.050123%, the calculation will lead to 0.050123% * 1M = 501.23. However, gateway will only accept <mark style="color:green;">integer</mark> as <mark style="color:red;">slippage_tolerance.</mark> The final value should be <mark style="color:red;">501</mark></p>
+<blockquote>
+<p><strong>Note:</strong>
+You need to find out whether this transfer is used for pegged token according to <a href="gateway-gettransferconfigsforall.html#peggedpairconfig">PeggedPairConfigs</a>. Moreover, slippage will not be effective if is_pagged is true</p>
+</blockquote>
 <h2 id="response-parameters"><a class="header" href="#response-parameters">Response Parameters <a href="#response-parameters" id="response-parameters"></a></a></h2>
 <div class="table-wrapper">
 <table>
@@ -287,28 +283,32 @@ You need to find out whether this transfer is used for pegged token according to
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 How to calculate max_slippage?</p>
+</blockquote>
 <p>There are several factors influencing the final value for max_slippage, all of them are inside the response. Since we cannot guarantee user receiving more tokens on destination chain, there is slippage adjustment in the end.</p>
 <ol>
 <li>estimate_dst_amt = user_transfer_amount_on_src_chain * bridge_rate</li>
 <li>estimate_min_dst_amt = estimate_dst_amt * (1 - slippage_tolerance_rate) - base_fee - perc_fee</li>
 <li>max_slippage_rate = 1 - estimate_min_dst_amt / user_transfer_amount_on_src_chain</li>
-<li>max_slippage = max(max_slippage_rate * 1M, minimalMaxSlippage)
-{% endhint %}</li>
+<li>max_slippage = max(max_slippage_rate * 1M, minimalMaxSlippage)</li>
 </ol>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 Minimum receiving amount calculation</p>
-<p>amount = eq_value_token_amt  *  (1 - max_slippage/1M)
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
+</blockquote>
+<p>amount = eq_value_token_amt  *  (1 - max_slippage/1M)</p>
+<blockquote>
+<p><strong>Note:</strong>
 The on-chain send transaction failed <em><strong>mostly when slippage is too small to be processed by cBridge system.</strong></em> </p>
+</blockquote>
 <p>To avoid the potential on-chain failure and waste of gas, we recommend you compare max_slippage with minimalMaxSlippage on cBridge contract before sending on-chain  transaction. If max_slippage is less than minimalMaxSlippage, guide user increasing input value slippage_tolerance.</p>
-<p>Moreover, since max_slippage, bridge_rate, perc_fee and base_fee may change when user interacting with your application, we should get the lastest estimation before final submit to avoid <a href="contract-pool-based-transfer.html">on-chain send</a> failure.
-{% endhint %}</p>
-<p>{% hint style=“danger” %}
-The cross-chain transfer is accepted only. if src_chain_id is the same as dst_chain_id, it may lead to an error
-{% endhint %}</p>
+<p>Moreover, since max_slippage, bridge_rate, perc_fee and base_fee may change when user interacting with your application, we should get the lastest estimation before final submit to avoid <a href="contract-pool-based-transfer.html">on-chain send</a> failure.</p>
+<blockquote>
+<p><strong>Note:</strong>
+The cross-chain transfer is accepted only. if src_chain_id is the same as dst_chain_id, it may lead to an error</p>
+</blockquote>
 <h2 id="error-handling"><a class="header" href="#error-handling">Error handling</a></h2>
 <h3 id="error-code-description"><a class="header" href="#error-code-description">Error Code Description</a></h3>
 <table>
@@ -353,15 +353,11 @@ The cross-chain transfer is accepted only. if src_chain_id is the same as dst_ch
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "median_transfer_latency_in_second": 325.818221
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 
                     </main>
 

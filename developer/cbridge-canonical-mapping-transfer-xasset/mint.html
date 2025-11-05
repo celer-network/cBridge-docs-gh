@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -185,12 +185,14 @@
 <li>Submit on-chain deposit/mint request to cBridge OriginalTokenVault contract on source chain</li>
 <li>Get transfer status repeatedly to check whether the mint is complete.</li>
 </ol>
-<p>{% hint style=“success” %}
-Mint/Burn flow are quite similar to pool-based token transfer flow. However, it is simpler because there is no slippage-related transfer failure scenario. If user’s original token could be moved into OriginalTokenVault, peggedTokenBridge will mint and send corresponding pegged tokens to user’s wallet address on pegged chain.
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-If vault_version given by pegged_pair_config is 2, please use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVaultV2.sol">OriginalTokenVaultV2</a>. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVault.sol">OriginalTokenVault</a>  
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Mint/Burn flow are quite similar to pool-based token transfer flow. However, it is simpler because there is no slippage-related transfer failure scenario. If user’s original token could be moved into OriginalTokenVault, peggedTokenBridge will mint and send corresponding pegged tokens to user’s wallet address on pegged chain.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+If vault_version given by pegged_pair_config is 2, please use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVaultV2.sol">OriginalTokenVaultV2</a>. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVault.sol">OriginalTokenVault</a>  </p>
+</blockquote>
 
                     </main>
 

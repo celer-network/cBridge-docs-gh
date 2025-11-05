@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -183,15 +183,18 @@
 <li>Submit on-chain withdraw request to cBridge <strong>OriginalTokenVault</strong> contract with information provided by cBridge gateway in <a href="../api-reference/gateway-gettransferstatus.html">getTransferStatus</a> response</li>
 <li>Once the refund transaction succeeds, the refund flow is complete.</li>
 </ol>
-<p>{% hint style=“warning” %}
- Because of no slippage constraints, the possibility of deposit/mint flow failure is pretty low. Once mint flow failed with source chain deposit transaction, you will need to withdraw user’s assets.  The whole refund flow is the same as <a href="../cbridge-pool-based-transfer-xliquidity/#transfer-refund">pool-based transfer flow</a>. However, you should communicate with <strong>OriginalTokenVault</strong> contract for this refund
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-You should submit transaction to <strong>OriginalTokenVaultV2</strong> if you interact with <strong>OriginalTokenVaultV2</strong> for the previous transfer
-{% endhint %}</p>
-<p>{% hint style=“info” %}
-Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+ Because of no slippage constraints, the possibility of deposit/mint flow failure is pretty low. Once mint flow failed with source chain deposit transaction, you will need to withdraw user’s assets.  The whole refund flow is the same as <a href="../cbridge-pool-based-transfer-xliquidity/#transfer-refund">pool-based transfer flow</a>. However, you should communicate with <strong>OriginalTokenVault</strong> contract for this refund</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+You should submit transaction to <strong>OriginalTokenVaultV2</strong> if you interact with <strong>OriginalTokenVaultV2</strong> for the previous transfer</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support</p>
+</blockquote>
 
                     </main>
 

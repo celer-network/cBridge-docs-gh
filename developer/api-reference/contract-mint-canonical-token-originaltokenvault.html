@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,11 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain"><a class="header" href="#description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain">description: &gt;-
-Lock user’s assets into cBridge and mint corresponding token on the
-destination chain</a></h2>
-<h1 id="contract-mint-canonical-tokenoriginaltokenvault"><a class="header" href="#contract-mint-canonical-tokenoriginaltokenvault">Contract: Mint Canonical Token(OriginalTokenVault)</a></h1>
+                        <h1 id="contract-mint-canonical-tokenoriginaltokenvault"><a class="header" href="#contract-mint-canonical-tokenoriginaltokenvault">Contract: Mint Canonical Token(OriginalTokenVault)</a></h1>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Minting is the process of locking original tokens on the source chain and minting canonical tokens that are pegged 1:1 on the destination chain. Original tokens can be deposited into the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol">OriginalTokenVault</a> contract on the source chain, specifically via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol#L64">deposit</a> or <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol#L84">depositNative</a> functions, which will trigger the minting of canonical tokens from the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/PeggedTokenBridge.sol">PeggedTokenBridge</a> contract on the destination chain. For advanced users, the two deposit functions can be called from smart contracts. </p>
 <p>Here is the <mark style="color:red;">abi</mark> for the canonical / pegged token bridge contracts: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol</a>, <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/OriginalTokenVault.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/OriginalTokenVault.sol</a></p>
@@ -211,9 +207,10 @@ destination chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation"><a class="header" href="#transferid-generation">TransferId Generation</a></h3>
 <p>When you submit on-chain deposit transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="gateway-gettransferstatus.html">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">/// Example transaction:

@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,9 +178,10 @@
                     <main>
                         <h1 id="smart-contract-as-lp"><a class="header" href="#smart-contract-as-lp">Smart Contract as LP</a></h1>
 <p>The liquidity pool mode of cBridge supports using a smart contract (eg. a multi-sig wallet) to provide liquidity, with the caveat of having to follow a special process to withdraw liquidity. This tutorial describes the process of adding and withdrawing liquidity using smart contracts.</p>
-<p>{% hint style=“info” %}
-<strong>This feature has only been released on a limited number of chains.</strong> 
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+<strong>This feature has only been released on a limited number of chains.</strong> </p>
+</blockquote>
 <p><mark style="color:red;"><strong>Note: Before adding any liquidity to cBridge from a smart contract, make sure you have read this tutorial and are comfortable with following the technical instructions.</strong></mark></p>
 <h3 id="prerequisite-check-lp-address"><a class="header" href="#prerequisite-check-lp-address"><strong>Prerequisite: Check LP address</strong> </a></h3>
 <p>Currently, we have only released support for contract LPs on a limited number of chains on which we have deployed <a href="https://github.com/celer-network/sgn-v2-contracts/blob/243d1e3924527c463650af9809b24d24cffe7242/contracts/liquidity-bridge/WithdrawInbox.sol">WithdrawInbox</a> contracts to facilitate withdrawing liquidity:</p>
@@ -271,9 +272,10 @@
 <h3 id="submit-withdrawal-on-chain"><a class="header" href="#submit-withdrawal-on-chain">Submit Withdrawal On-Chain</a></h3>
 <p>Once you have received a response with status <code>2</code>, prepare the input parameters for the on-chain withdrawal transaction. As described in the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/2bf3c4e6287eb529fbb8bb2368f4838e5a500749/contracts/Pool.sol#L86">withdraw</a> function, you need to supply <code>_wdmsg</code>, <code>_sigs</code>, <code>_signers</code> and <code>_powers</code>. You can use an explorer like Etherscan to send the transaction.</p>
 <p>The <code>wd_onchain</code> you saved corresponds to <code>_wdmsg</code>. Go to <a href="https://cryptii.com/pipes/base64-to-hex">base64-to-hex</a>, paste <code>wd_onchain</code> on the left, switch <code>GROUP BY</code> to <code>NONE</code> on the right, add a hex prefix <code>0x</code> to the result on the right, and you will get <code>_wdmsg</code>.</p>
-<p>{% hint style=“info” %}
-For <code>sorted_sigs</code>, <code>signers</code> and <code>powers</code>, do not change the order of parameters within the arrays.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+For <code>sorted_sigs</code>, <code>signers</code> and <code>powers</code>, do not change the order of parameters within the arrays.</p>
+</blockquote>
 <p><code>sorted_sigs</code> corresponds to <code>_sigs</code>. Convert the signature strings in <code>sorted_sigs</code>one by one using the same way as with <code>wd_onchain</code>, and put all <code>0x</code> prefixed strings in an array <code>[]</code> to get <code>_sigs</code>.</p>
 <p><code>signers</code> corresponds to <code>_signers</code>. Prepare them the same way as <code>sorted_sigs</code>.</p>
 <p><code>powers</code> corresponds to <code>_powers</code>.  First, convert the strings the same way as with <code>wd_onchain</code> but this time without adding <code>0x</code> prefixes. Second, go to <a href="https://cryptii.com/pipes/hex-binary">hex-binary</a>, switch <code>CONVERT TO</code> to <code>Decimal(10)</code> in the middle and convert the result from the first step to decimal number. Put all the numbers you get in an array <code>[]</code> to get <code>_powers</code>.</p>

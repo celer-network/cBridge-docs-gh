@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,19 +176,15 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---referral-code-is-treated-as-the-provider-mark-for-a-transfer-to-provide-a-better-insight-about-users-transfer-behavior-you-can-attach-your-referral-code-to-cbridge-gateway"><a class="header" href="#description---referral-code-is-treated-as-the-provider-mark-for-a-transfer-to-provide-a-better-insight-about-users-transfer-behavior-you-can-attach-your-referral-code-to-cbridge-gateway">description: &gt;-
-Referral code is treated as the provider mark for a transfer. To provide a
-better insight about users’ transfer behavior, you can attach your referral
-code to cBridge gateway.</a></h2>
-<h1 id="referral-specific-transfer"><a class="header" href="#referral-specific-transfer">Referral Specific Transfer</a></h1>
+                        <h1 id="referral-specific-transfer"><a class="header" href="#referral-specific-transfer">Referral Specific Transfer</a></h1>
 <h2 id="referral-code-inside-cbridge-website"><a class="header" href="#referral-code-inside-cbridge-website">Referral code inside cBridge website</a></h2>
 <p>You can attach your referral code to cBridge website. When user uses the URL with referral code, cBridge website will help build relationship between your referral code and user’s on-chain transaction. Here is the sample link for the referral code </p>
 <pre><code>https://cbridge.celer.network/#/transfer?ref={your_provider_name}
 </code></pre>
-<p>{% hint style=“info” %}
-Please use the correct parameter key for referral code, which is <mark style="color:red;">ref</mark>. Otherwise, cBridge website will not recognize your referral code
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Please use the correct parameter key for referral code, which is <mark style="color:red;">ref</mark>. Otherwise, cBridge website will not recognize your referral code</p>
+</blockquote>
 <h2 id="referral-code-through-cbridge-sdk"><a class="header" href="#referral-code-through-cbridge-sdk">Referral code through cBridge SDK</a></h2>
 <p>When integrating with cBridge SDK, you can establish relation between your ref code and user’s on-chain transaction by posting <a href="api-reference/gateway-markrefrelation.html">markRefRelation</a> request to cBridge gateway. You may refer <a href="api-reference/gateway-markrefrelation.html">this</a> for more details.</p>
 

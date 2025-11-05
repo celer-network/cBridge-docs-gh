@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -185,25 +185,22 @@
 <li>Submit transfer transaction through <strong>TransferAgent</strong> contract on EVM chains</li>
 <li>Submit transfer transaction to Aptos Modules(Vault for deposit, PegBridge for burn) deployed by cBridge.</li>
 </ul>
-<p>{% hint style=“warning” %}
-To avoid chain id conflict, Celer SGN reserves <mark style="color:red;"><strong>12360001</strong></mark> as <mark style="color:red;"><strong>Aptos Mainnet</strong></mark> Chain Id, <mark style="color:orange;"><strong>12360002</strong></mark> as <mark style="color:orange;"><strong>Aptos Testnet</strong></mark> Chain Id and <mark style="color:blue;"><strong>12360003</strong></mark> as <mark style="color:blue;"><strong>Aptos Devnet</strong></mark> Chain Id.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+To avoid chain id conflict, Celer SGN reserves <mark style="color:red;"><strong>12360001</strong></mark> as <mark style="color:red;"><strong>Aptos Mainnet</strong></mark> Chain Id, <mark style="color:orange;"><strong>12360002</strong></mark> as <mark style="color:orange;"><strong>Aptos Testnet</strong></mark> Chain Id and <mark style="color:blue;"><strong>12360003</strong></mark> as <mark style="color:blue;"><strong>Aptos Devnet</strong></mark> Chain Id.</p>
+</blockquote>
 <h2 id="submit-transfer-through-transferagent-contract-on-evm"><a class="header" href="#submit-transfer-through-transferagent-contract-on-evm">Submit transfer through <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/proxy/TransferAgent.sol">TransferAgent</a> contract on EVM </a></h2>
 <p>Unlike EVM wallet address, Aptos wallet uses <mark style="color:blue;"><strong>32</strong></mark> bytes hex string as address. Then you <mark style="color:red;"><strong>cannot</strong></mark> submit transfer transaction <strong>using Aptos wallet address as destination receiver</strong> through cBridge <strong>OriginalTokenVault</strong> / <strong>PeggedBridge</strong> contract. Hence, cBridge deploys a TransferAgent contract which can use any length string as destination receiver.</p>
-<p>{% content-ref url=“api-reference/contract-transferagent-mint-token-submission.md” %}
-<a href="api-reference/contract-transferagent-mint-token-submission.html">contract-transferagent-mint-token-submission.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“api-reference/contract-transferagent-burn-token-submission.md” %}
-<a href="api-reference/contract-transferagent-burn-token-submission.html">contract-transferagent-burn-token-submission.md</a>
-{% endcontent-ref %}</p>
+<p><a href="api-reference/contract-transferagent-mint-token-submission.html">Link</a>
+<a href="api-reference/contract-transferagent-mint-token-submission.html">contract-transferagent-mint-token-submission.md</a></p>
+<p><a href="api-reference/contract-transferagent-burn-token-submission.html">Link</a>
+<a href="api-reference/contract-transferagent-burn-token-submission.html">contract-transferagent-burn-token-submission.md</a></p>
 <h2 id="submit-transfer-on-aptos-chain"><a class="header" href="#submit-transfer-on-aptos-chain">Submit transfer on Aptos Chain</a></h2>
 <p>You can refer <a href="https://aptos.dev/guides/aptos-guides">this</a> to submit transaction on Aptos</p>
-<p>{% content-ref url=“api-reference/contract-aptos-vault-mint-token-submission.md” %}
-<a href="api-reference/contract-aptos-vault-mint-token-submission.html">contract-aptos-vault-mint-token-submission.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“api-reference/contract-aptos-pegbridge-burn-token-submission.md” %}
-<a href="api-reference/contract-aptos-pegbridge-burn-token-submission.html">contract-aptos-pegbridge-burn-token-submission.md</a>
-{% endcontent-ref %}</p>
+<p><a href="api-reference/contract-aptos-vault-mint-token-submission.html">Link</a>
+<a href="api-reference/contract-aptos-vault-mint-token-submission.html">contract-aptos-vault-mint-token-submission.md</a></p>
+<p><a href="api-reference/contract-aptos-pegbridge-burn-token-submission.html">Link</a>
+<a href="api-reference/contract-aptos-pegbridge-burn-token-submission.html">contract-aptos-pegbridge-burn-token-submission.md</a></p>
 
                     </main>
 

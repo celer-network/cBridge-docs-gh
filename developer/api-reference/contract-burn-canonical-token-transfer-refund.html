@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,12 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain--then-cbridge-peggedtokenbridge-contract-will-mint-corresponding-assets-to-users-address-on-source-chain"><a class="header" href="#description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain--then-cbridge-peggedtokenbridge-contract-will-mint-corresponding-assets-to-users-address-on-source-chain">description: &gt;-
-Get refund transaction info from cBridge gateway and submit the transaction
-on-chain.  Then cBridge PeggedTokenBridge contract will mint corresponding
-assets to user’s address on source chain</a></h2>
-<h1 id="contract-burn-canonical-token-transfer-refund"><a class="header" href="#contract-burn-canonical-token-transfer-refund">Contract: Burn Canonical Token Transfer Refund</a></h1>
+                        <h1 id="contract-burn-canonical-token-transfer-refund"><a class="header" href="#contract-burn-canonical-token-transfer-refund">Contract: Burn Canonical Token Transfer Refund</a></h1>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Here is the <mark style="color:red;">abi</mark> for PeggedTokenBridge: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol</a></p>
 <pre><code class="language-javascript">peggedTokenBridge.mint(wdmsg, sigs, signers, powers)
@@ -201,11 +196,10 @@ assets to user’s address on source chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample</p>
+</blockquote>
 <pre><code class="language-javascript">import { base64, getAddress, hexlify } from "ethers/lib/utils";
 
 const wdmsg = base64.decode(wd_onchain);
@@ -224,8 +218,6 @@ const powers = _powers.map(item =&gt; {
     return base64.decode(item);
 });
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="response"><a class="header" href="#response">Response</a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response.</p>
 

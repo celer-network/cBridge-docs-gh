@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,9 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description-get-transfer-status-from-cbridge-gateway"><a class="header" href="#description-get-transfer-status-from-cbridge-gateway">description: Get transfer status from cBridge gateway</a></h2>
-<h1 id="gateway-gettransferstatus"><a class="header" href="#gateway-gettransferstatus">Gateway: GetTransferStatus</a></h1>
+                        <h1 id="gateway-gettransferstatus"><a class="header" href="#gateway-gettransferstatus">Gateway: GetTransferStatus</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">REST API</a></h3>
 <p><mark style="color:green;"><code>POST</code></mark> <code>https://cbridge-prod2.celer.app/v2/getTransferStatus</code></p>
 <p>Here is a curl example.</p>
@@ -207,8 +205,6 @@
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "status": 5,
@@ -225,8 +221,6 @@
   "dst_block_tx_link": "https://arbiscan.io/tx/0xe73db1fff7407a72d4755cd52252d29afd2e5326b755725df56befba4ff7594b"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api"><a class="header" href="#grpc-web-api">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">import {
     GetTransferStatusRequest
@@ -313,17 +307,14 @@ const response = await client.getTransferStatus((request, null);
 </tbody>
 </table>
 
-<p>{% hint style=“info” %}
-We should focus on status types with <mark style="color:red;">BAD</mark> prefix, it shows the error reason for failed transfer transaction. Other status indicates normal transaction flow.
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+We should focus on status types with <mark style="color:red;">BAD</mark> prefix, it shows the error reason for failed transfer transaction. Other status indicates normal transaction flow.</p>
+</blockquote>
 <pre><code class="language-javascript">/// Code Sample
 
 const statusRes = await getTransferStatus({ transfer_id: transferId }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 
                     </main>
 

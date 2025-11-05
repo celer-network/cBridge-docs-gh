@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,9 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description-get-list-of-users-transfer-history"><a class="header" href="#description-get-list-of-users-transfer-history">description: Get list of user’s transfer history</a></h2>
-<h1 id="gateway-transferhistory"><a class="header" href="#gateway-transferhistory">Gateway: TransferHistory</a></h1>
+                        <h1 id="gateway-transferhistory"><a class="header" href="#gateway-transferhistory">Gateway: TransferHistory</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">REST API</a></h3>
 <h2 id="get-a-list-of-users-transfer-history"><a class="header" href="#get-a-list-of-users-transfer-history">Get a list of user’s transfer history</a></h2>
 <p><mark style="color:blue;"><code>GET</code></mark> <code>https://cbridge-prod2.celer.app/v2/transferHistory</code></p>
@@ -197,8 +195,6 @@
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "history": [
@@ -207,8 +203,6 @@
   "current_size": "0"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api"><a class="header" href="#grpc-web-api">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">// import transfer history request message 
 import {
@@ -240,9 +234,10 @@ const response = await client.transferHistory(request, null);
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
-To get the latest histories, use empty string as next_page_token. Otherwise, use value given by response.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+To get the latest histories, use empty string as next_page_token. Otherwise, use value given by response.</p>
+</blockquote>
 <h2 id="response-parameters"><a class="header" href="#response-parameters">Response Parameters</a></h2>
 <div class="table-wrapper">
 <table>
@@ -256,9 +251,10 @@ To get the latest histories, use empty string as next_page_token. Otherwise, use
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
-If current_page_size in response is smaller than page_size in request, it means list has come to an end/
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If current_page_size in response is smaller than page_size in request, it means list has come to an end/</p>
+</blockquote>
 <h3 id="transferhistory"><a class="header" href="#transferhistory">TransferHistory</a></h3>
 <div class="table-wrapper">
 <table>

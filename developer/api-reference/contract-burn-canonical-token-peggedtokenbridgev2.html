@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,9 +176,7 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge"><a class="header" href="#description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge">description: ‘Contract: Burn pegged tokens and unlock original token from cBridge’</a></h2>
-<h1 id="contract-burn-canonical-token-peggedtokenbridgev2"><a class="header" href="#contract-burn-canonical-token-peggedtokenbridgev2">Contract: Burn Canonical Token (PeggedTokenBridgeV2)</a></h1>
+                        <h1 id="contract-burn-canonical-token-peggedtokenbridgev2"><a class="header" href="#contract-burn-canonical-token-peggedtokenbridgev2">Contract: Burn Canonical Token (PeggedTokenBridgeV2)</a></h1>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation <a href="#implementation" id="implementation"></a></a></h2>
 <p>The user can specify destination chain id when submitting burn transaction to PeggedTokenBridgeV2. The destination chain id can be original chain id which means the user will bring back his asset from OriginalTokenVault. The destination chain id could indicate another pegged chain where another PeggedTokenBridgeV2 is deployed and able to mint corresponding canonical token. </p>
 <pre><code class="language-javascript">peggedTokenBridge!.burn(
@@ -203,9 +201,10 @@
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation"><a class="header" href="#transferid-generation">TransferId Generation <a href="#transferid-generation" id="transferid-generation"></a></a></h3>
 <p>When you submit on-chain burn transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="gateway-gettransferstatus.html">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">const burn_id = ethers.utils.solidityKeccak256(
@@ -231,9 +230,10 @@ If <code>withdraw_account</code> is a smart contract and the token you are sendi
      ],
 )
 </code></pre>
-<p>{% hint style=“warning” %}
-Please be aware that transfer id generation parameters are different between <strong>PeggedTokenBridge</strong> and <strong>PeggedTokenBridgeV2</strong>
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Please be aware that transfer id generation parameters are different between <strong>PeggedTokenBridge</strong> and <strong>PeggedTokenBridgeV2</strong></p>
+</blockquote>
 <h2 id="response"><a class="header" href="#response">Response <a href="#request-parameters-1" id="request-parameters-1"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response.</p>
 

@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-1c4f9e39.js"></script>
+        <script src="../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,9 +182,9 @@
 <h4 id="1--minsendmaxsend"><a class="header" href="#1--minsendmaxsend">1.  minSend/maxSend</a></h4>
 <p>The sending amount range is <mark style="color:red;">(minSend, maxSend]</mark>, for Pool-based transfer, you can get the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/4d742f6c337f06777947a73accd9f78239de92ee/contracts/liquidity-bridge/Bridge.sol#L41">minSend</a>/<a href="https://github.com/celer-network/sgn-v2-contracts/blob/4d742f6c337f06777947a73accd9f78239de92ee/contracts/liquidity-bridge/Bridge.sol#L42">minMax</a> on source chain <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/liquidity-bridge/Bridge.sol">Bridge contract</a>, the address is the token address on source chain. </p>
 <p>The screenshot is an example to get the USDC minSend Value on Ethereum.</p>
-<div align="center" data-full-width="true"><figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption>
+<div align="center" data-full-width="true"><img src="../.gitbook/assets/image (35).png" alt=""><figcaption>
 <p>Example of getting the USDC minSend Value on Ethereum</p>
-</figcaption></figure></div>
+</figcaption></div>
 
 <p>Note if the transfer token is ETH, use the WETH token address as the query key.</p>
 <h4 id="2-pool-cap"><a class="header" href="#2-pool-cap">2. pool cap</a></h4>
@@ -196,9 +196,10 @@
 </code></pre>
 <p>Error Message:</p>
 <p>You can transfer up to {<code>remainning_amount</code>} {<code>token_symbol</code>} at this moment. You may reduce your transfer amount. the <code>remainning_amount</code> = <code>pool</code> -  <code>current volume</code></p>
-<p>{% hint style=“info” %}
-(Aside) The pool cap limit value can be read from the <code>inbound_lmt</code> field in the <a href="https://cbridge-prod2.celer.app/v1/getTransferConfigsForAll">configuration</a> file.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+(Aside) The pool cap limit value can be read from the <code>inbound_lmt</code> field in the <a href="https://cbridge-prod2.celer.app/v1/getTransferConfigsForAll">configuration</a> file.</p>
+</blockquote>
 <h3 id="destination-chain"><a class="header" href="#destination-chain">Destination Chain</a></h3>
 <h4 id="1-big-amount-delay"><a class="header" href="#1-big-amount-delay">1. Big amount delay</a></h4>
 <p>If the sending amount is greater than an on-chain threshold, the transaction might be delayed for a while due to security reasons. You can retrieve these parameters from the destination chain.</p>
@@ -217,9 +218,9 @@ if (lastOpTimestamps[_token] &lt; epochStartTime) {
 require(volume &lt;= cap, "volume exceeds cap");
 </code></pre>
 <p>You can obtain the <code>epochVolumeCaps</code> , <code>lastOpTimestamps</code>, <code>epochLength</code> and corresponding token <code>epochVolumes</code> from the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/safeguard/VolumeControl.sol">VolumeControl</a> Contract, which has been implemented by the Bridge Contract. The accumulated volume in this period must be lower than the value specified by the “<code>epochVolumeCaps</code>”. </p>
-<div align="center"><figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption>
+<div align="center"><img src="../.gitbook/assets/image (36).png" alt=""><figcaption>
 <p>Example of getting epochVolumeCaps from Ethereum pool.</p>
-</figcaption></figure></div>
+</figcaption></div>
 
 
                     </main>

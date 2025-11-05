@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -184,9 +184,10 @@
 <li>Submit on-chain burn request to cBridge PeggedTokenBridge contract on pegged chain</li>
 <li>Get transfer status repeatedly to check whether the burn/withdraw is complete.</li>
 </ol>
-<p>{% hint style=“warning” %}
-If bridge_version given by pegged_pair_config is 2, you should submit transaction using <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridgeV2.sol">PeggedTokenBridgeV2</a> abi. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridge.sol">PeggedTokenBridge</a>. The parameters of burn function are different since PeggedTokenBridgeV2 supports <a href="burn.html#undefined">Burn-Mint mode</a>.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If bridge_version given by pegged_pair_config is 2, you should submit transaction using <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridgeV2.sol">PeggedTokenBridgeV2</a> abi. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridge.sol">PeggedTokenBridge</a>. The parameters of burn function are different since PeggedTokenBridgeV2 supports <a href="burn.html#undefined">Burn-Mint mode</a>.</p>
+</blockquote>
 <h3 id="burn-mint-peggedtokenbridgev2-only"><a class="header" href="#burn-mint-peggedtokenbridgev2-only">Burn-Mint (PeggedTokenBridgeV2 only)</a></h3>
 <p>Unlike PeggedTokenBridge, you can burn canonical token on pegged chain where PeggedTokenBridgeV2 is deployed and Celer SGN will mint corresponding tokens on another pegged chain if both pegged chains share the same <a href="../api-reference/gateway-gettransferconfigsforall.html#peggedpairconfig">original chain id</a> and the same <a href="../api-reference/gateway-gettransferconfigsforall.html#peggedpairconfig">original token</a>. In this scenario, the user can skip interaction with OriginalTokenVault and have a better experience for his assets transfer. </p>
 

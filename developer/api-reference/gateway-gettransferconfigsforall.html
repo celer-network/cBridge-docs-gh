@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "../../searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-1c4f9e39.js"></script>
+        <script src="../../toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -176,21 +176,15 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <hr>
-<h2 id="description-get-transfer-configs-for-cbridge-transfer-functionality"><a class="header" href="#description-get-transfer-configs-for-cbridge-transfer-functionality">description: Get transfer configs for cBridge transfer functionality</a></h2>
-<h1 id="gateway-gettransferconfigsforall"><a class="header" href="#gateway-gettransferconfigsforall">Gateway: GetTransferConfigsForAll</a></h1>
+                        <h1 id="gateway-gettransferconfigsforall"><a class="header" href="#gateway-gettransferconfigsforall">Gateway: GetTransferConfigsForAll</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">REST API</a></h3>
 <h2 id="get-chains-and-corresponding-tokens-supported-by-cbridge"><a class="header" href="#get-chains-and-corresponding-tokens-supported-by-cbridge">Get chains and corresponding tokens supported by cBridge</a></h2>
 <p><mark style="color:blue;"><code>GET</code></mark> <code>https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll</code></p>
 <p>By using this method, you can find chains’ and tokens’ information for cBridge testnet transfer, you can use cBridge production endpoint for mainnet configs</p>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
     // Response
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="request-parameters"><a class="header" href="#request-parameters">Request Parameters</a></h2>
 <p>None</p>
 <h2 id="response-parameters"><a class="header" href="#response-parameters">Response Parameters</a></h2>
@@ -263,9 +257,10 @@
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If transfer_disabled or xfer_disabled is true, we cannot transfer the token on the corresponding chain
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If transfer_disabled or xfer_disabled is true, we cannot transfer the token on the corresponding chain</p>
+</blockquote>
 <h3 id="peggedpairconfig"><a class="header" href="#peggedpairconfig">PeggedPairConfig</a></h3>
 <div class="table-wrapper">
 <table>
@@ -284,9 +279,10 @@ If transfer_disabled or xfer_disabled is true, we cannot transfer the token on t
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-All data inside the configs should not be edited, otherwise it may lead to failure.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+All data inside the configs should not be edited, otherwise it may lead to failure.</p>
+</blockquote>
 
                     </main>
 

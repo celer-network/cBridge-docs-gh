@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6bca1693.js";
+            window.path_to_searchindex_js = "searchindex-2094aad4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-1c4f9e39.js"></script>
+        <script src="toc-1a2d8963.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -383,7 +383,7 @@
 <p>PeckShield Report: <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/PeckShield_general.pdf">liquidity bridge</a>, <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/PeckShield_pegged.pdf">canonical bridge</a></p>
 <p>SlowMist Report: <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/SlowMist_general.pdf">liquidity bridge</a>, <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/SlowMist_pegged.pdf">canonical bridge</a></p>
 <h3 id="2m-bug-bounty"><a class="header" href="#2m-bug-bounty">$2M Bug Bounty</a></h3>
-<p>In addition to the security audits, Celer cBridge has a standing <a href="https://immunefi.com/bounty/celer/">$2M bug bounty in ImmuneF</a>i. </p>
+<p>In addition to the security audits, Celer cBridge has a standing <a href="https://immunefi.com/bounty/celer/">$2M bug bounty in ImmuneF</a>i</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="cross-chain-transfer"><a class="header" href="#cross-chain-transfer">Cross-chain Transfer</a></h1>
 <p>In this tutorial, we will guide you through the process for making a cross-chain transfer.</p>
@@ -451,9 +451,10 @@
 <p>6. When the transaction is complete, you can check your liquidity summary, positions, earnings and rewards in “Your Liquidity Overview”.</p>
 <p><img src=".gitbook/assets/liquidity overview 01.png" alt=""></p>
 <h3 id="earn-transaction-fees--farming-rewards"><a class="header" href="#earn-transaction-fees--farming-rewards">Earn Transaction Fees &amp; Farming Rewards</a></h3>
-<p>{% hint style=“info” %}
-Screenshots used in this tutorial are from cBridge testnet.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Screenshots used in this tutorial are from cBridge testnet.</p>
+</blockquote>
 <p>Supplying liquidity in cBridge comes with the benefits of liquidity fee earnings and farming rewards.</p>
 <p>When you supply liquidity, you earn a percentage of the transaction fees from people who use your liquidity to bridge funds across chains, and your liquidity fee earnings are automatically added to your total liquidity.</p>
 <p><img src=".gitbook/assets/cBridge 2_0 操作文档2316.png" alt=""></p>
@@ -596,9 +597,10 @@ Screenshots used in this tutorial are from cBridge testnet.
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="smart-contract-as-lp"><a class="header" href="#smart-contract-as-lp">Smart Contract as LP</a></h1>
 <p>The liquidity pool mode of cBridge supports using a smart contract (eg. a multi-sig wallet) to provide liquidity, with the caveat of having to follow a special process to withdraw liquidity. This tutorial describes the process of adding and withdrawing liquidity using smart contracts.</p>
-<p>{% hint style=“info” %}
-<strong>This feature has only been released on a limited number of chains.</strong> 
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+<strong>This feature has only been released on a limited number of chains.</strong> </p>
+</blockquote>
 <p><mark style="color:red;"><strong>Note: Before adding any liquidity to cBridge from a smart contract, make sure you have read this tutorial and are comfortable with following the technical instructions.</strong></mark></p>
 <h3 id="prerequisite-check-lp-address"><a class="header" href="#prerequisite-check-lp-address"><strong>Prerequisite: Check LP address</strong> </a></h3>
 <p>Currently, we have only released support for contract LPs on a limited number of chains on which we have deployed <a href="https://github.com/celer-network/sgn-v2-contracts/blob/243d1e3924527c463650af9809b24d24cffe7242/contracts/liquidity-bridge/WithdrawInbox.sol">WithdrawInbox</a> contracts to facilitate withdrawing liquidity:</p>
@@ -689,30 +691,26 @@ Screenshots used in this tutorial are from cBridge testnet.
 <h3 id="submit-withdrawal-on-chain"><a class="header" href="#submit-withdrawal-on-chain">Submit Withdrawal On-Chain</a></h3>
 <p>Once you have received a response with status <code>2</code>, prepare the input parameters for the on-chain withdrawal transaction. As described in the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/2bf3c4e6287eb529fbb8bb2368f4838e5a500749/contracts/Pool.sol#L86">withdraw</a> function, you need to supply <code>_wdmsg</code>, <code>_sigs</code>, <code>_signers</code> and <code>_powers</code>. You can use an explorer like Etherscan to send the transaction.</p>
 <p>The <code>wd_onchain</code> you saved corresponds to <code>_wdmsg</code>. Go to <a href="https://cryptii.com/pipes/base64-to-hex">base64-to-hex</a>, paste <code>wd_onchain</code> on the left, switch <code>GROUP BY</code> to <code>NONE</code> on the right, add a hex prefix <code>0x</code> to the result on the right, and you will get <code>_wdmsg</code>.</p>
-<p>{% hint style=“info” %}
-For <code>sorted_sigs</code>, <code>signers</code> and <code>powers</code>, do not change the order of parameters within the arrays.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+For <code>sorted_sigs</code>, <code>signers</code> and <code>powers</code>, do not change the order of parameters within the arrays.</p>
+</blockquote>
 <p><code>sorted_sigs</code> corresponds to <code>_sigs</code>. Convert the signature strings in <code>sorted_sigs</code>one by one using the same way as with <code>wd_onchain</code>, and put all <code>0x</code> prefixed strings in an array <code>[]</code> to get <code>_sigs</code>.</p>
 <p><code>signers</code> corresponds to <code>_signers</code>. Prepare them the same way as <code>sorted_sigs</code>.</p>
 <p><code>powers</code> corresponds to <code>_powers</code>.  First, convert the strings the same way as with <code>wd_onchain</code> but this time without adding <code>0x</code> prefixes. Second, go to <a href="https://cryptii.com/pipes/hex-binary">hex-binary</a>, switch <code>CONVERT TO</code> to <code>Decimal(10)</code> in the middle and convert the result from the first step to decimal number. Put all the numbers you get in an array <code>[]</code> to get <code>_powers</code>.</p>
 <p>With all the prepared parameters. Open Etherscan or whatever explorer you use, search for the cBridge address and connect to your wallet. Input the parameters to the withdraw function and send the transaction.</p>
 <p>Note that large withdrawals might be subject to delays.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="aptos-bridging-guide-1"><a href="#aptos-bridging-guide-1" class="header">Aptos Bridging Guide</a></h1>
-<hr>
-<h2 id="description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-chain-or-ethereum-to-aptos"><a class="header" href="#description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-chain-or-ethereum-to-aptos">description: &gt;-
-In this tutorial, we will guide you through the process of making a
-cross-chain transfer from BNB Chain or Ethereum to Aptos.</a></h2>
 <h1 id="aptos-bridging-guide"><a class="header" href="#aptos-bridging-guide">Aptos Bridging Guide</a></h1>
 <p>We’ll use the BNB Chain, the $BNB token, and the MetaMask and Petra Wallets in this tutorial as an example.</p>
 <h2 id="connect-your-wallet-1"><a class="header" href="#connect-your-wallet-1">Connect Your Wallet</a></h2>
 <p>Before you start transferring assets via cBridge, you need to connect wallet first.</p>
 <p>1. Click “Connect Wallet”, and you will be prompted to select a wallet. (cBridge currently supports MetaMask, TokenPocket, Coinbase Wallet, WalletConnect, and Clover on desktop browsers).</p>
-<figure><img src=".gitbook/assets/1.png" alt=""><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/1.png" alt=""><figcaption></figcaption></p>
 <p>2. Select “MetaMask”.</p>
 <p><img src=".gitbook/assets/2 (5).png" alt=""></p>
 <p>3. Click “Connect your Aptos wallet to receive the funds”, and you will be prompted to select a wallet. (cBridge currently supports Petra, Blocto, Martian, BitKeep, and Fewcha wallets for Aptos).</p>
-<figure><img src=".gitbook/assets/3 (1).png" alt=""><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/3 (1).png" alt=""><figcaption></figcaption></p>
 <p><img src=".gitbook/assets/4.png" alt=""></p>
 <p>4. Select “Petra” and you will be prompted with a confirmation on Petra. Click “Approve” and your wallet will be connected successfully.</p>
 <p><img src=".gitbook/assets/5 (1).png" alt=""></p>
@@ -744,8 +742,8 @@ cross-chain transfer from BNB Chain or Ethereum to Aptos.</a></h2>
 <p>Note: You need to claim first to receive the token on Aptos. <strong>You only need to claim once per token.</strong></p>
 <p><img src=".gitbook/assets/21 (1).png" alt=""></p>
 <p>If you close this window without claiming $BNB, you can also Claim in cBridge History section.</p>
-<figure><img src=".gitbook/assets/截屏2023-12-15 17.19.23.png" alt=""><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/截屏2023-12-15 17.20.33 (1).png" alt=""><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/截屏2023-12-15 17.19.23.png" alt=""><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/截屏2023-12-15 17.20.33 (1).png" alt=""><figcaption></figcaption></p>
 <p>8. Click “Approve” and you will see the Transfer Completed popup.</p>
 <p><img src=".gitbook/assets/22 (2).png" alt=""></p>
 <p><img src=".gitbook/assets/23 (1).png" alt=""></p>
@@ -780,140 +778,130 @@ cross-chain transfer from BNB Chain or Ethereum to Aptos.</a></h2>
 <h3 id="other-mobile-wallets"><a class="header" href="#other-mobile-wallets">Other Mobile Wallets</a></h3>
 <p>If you are using other mobile wallets, you try similar steps to adjust the gas price to 0 GWEI on Ape Chain. However, some mobile wallets may not allow 0 GWEI gas price (e.g., imToken). In this case, please use Metamask mobile or Metamask web extension to send bridge transactions on Ape Chain.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="flow-cadence-bridging-guide-1"><a href="#flow-cadence-bridging-guide-1" class="header">Flow Cadence Bridging Guide</a></h1>
-<hr>
-<h2 id="description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-to-flow-cadence"><a class="header" href="#description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-from-bnb-to-flow-cadence">description: &gt;-
-In this tutorial, we will guide you through the process of making a
-cross-chain transfer from BNB to Flow Cadence.</a></h2>
 <h1 id="flow-cadence-bridging-guide"><a class="header" href="#flow-cadence-bridging-guide">Flow Cadence Bridging Guide</a></h1>
 <h2 id="connect-your-wallet-2"><a class="header" href="#connect-your-wallet-2">Connect Your Wallet</a></h2>
 <p>Before you start transferring assets via cBridge, you will need to connect your wallet first.</p>
 <p>1. Click “Connect Wallet”, and you will be prompted to select a wallet. (cBridge now supports MetaMask, TokenPocket, Coinbase Wallet, WalletConnect, and Clover on desktop browsers).</p>
-<figure><img src=".gitbook/assets/Group 1000003508 (2).png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003508 (2).png" alt="" width="563"><figcaption></figcaption></p>
 <p>2. Select “MetaMask”.</p>
-<figure><img src=".gitbook/assets/image (3).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/image (3).png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="3">
 <li>Click “Connect your Flow wallet to receive the funds”, and you will be prompted to select a wallet. (cBridge now supports Blocto and Flow Reference wallets for Flow Cadence).</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003508 (3).png" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (6).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003508 (3).png" alt="" width="563"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (6).png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="4">
 <li> Connect a wallet you would like to use for transfer.</li>
 </ol>
 <p>    4.1 <em><strong>Connect Blocto Wallet</strong></em>. By entering your email address, you can Sign in/ Register to your Blocto Account. After entering passcode given by Blocto, you can click confirm button to connect your Blocto wallet to cBridge.</p>
-<figure><img src=".gitbook/assets/image (7).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (8).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (9).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (10).png" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/Group 1000003510.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/image (7).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (8).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (9).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (10).png" alt="" width="188"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/Group 1000003510.png" alt="" width="563"><figcaption></figcaption></p>
 <p>    4.2 <em><strong>Connect Flow Reference Wallet</strong></em>. cBridge website will detect whether you have installed Flow Reference Wallet. If not, you will need to install the chrome extension firstly according to the guideline and <strong>Refresh cBridge website.</strong> If Flow Reference Wallet has been installed in chrome,  you will see a prompt after selecting Flow Reference Wallet. By clicking <strong>Connect</strong> button, your Flow reference wallet is connected for cBridge transfer.</p>
-<figure><img src=".gitbook/assets/spaces_e2ozVyumMnvf5tn0izji_uploads_aMU6S6LtCNtdOTBKG0tx_image.webp" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (15).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/spaces_e2ozVyumMnvf5tn0izji_uploads_aMU6S6LtCNtdOTBKG0tx_image.webp" alt="" width="375"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (15).png" alt="" width="188"><figcaption></figcaption></p>
 <h2 id="transfer-assets-across-chains"><a class="header" href="#transfer-assets-across-chains">Transfer Assets Across Chains</a></h2>
 <p>Let’s say, you want to transfer 11 BUSD from BNB Chain to Flow Cadence. The steps are made simple in cBridge:</p>
 <ol>
 <li>Select “BNB Chain” in the dropbox next to “From” and “Flow Cadence” in the dropbox next to “To”.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003511.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003511.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="2">
 <li>You will be prompted to switch your wallet to BNB Chain if it’s not yet connected. Enter the amount you want to send under “Send”. You should see the estimated amount you will receive under “Receive (estimated)”.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003512 (3).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003512 (3).png" alt="" width="375"><figcaption></figcaption></p>
 <p>Note that there will be a difference between the amount you send and the amount you receive, which is determined by the bridge rate and fees. For the exact definition of each item in the transaction, check the tooltips next to each of the terms.</p>
-<figure><img src=".gitbook/assets/image (20).png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/image (20).png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="3">
 <li>Note that If you transfer BUSD to Flow Cadence <strong>for the first time</strong>, you will be prompted to “Create BUSD vault in your Follow wallet” first.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003513.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003513.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="4">
 <li>Then click “Approve” on Flow Wallet.</li>
 </ol>
-<figure><img src=".gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="5">
 <li>Then you need to “Approve BUSD”, and will be prompted to confirm on Metamask.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003513 (1).png" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (24).png" alt="" width="180"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (26).png" alt="" width="186"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003513 (1).png" alt="" width="375"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (24).png" alt="" width="180"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (26).png" alt="" width="186"><figcaption></figcaption></p>
 <ol start="6">
 <li>Click “Next” and “Approve” in each prompt and you can transfer your assets. Then, review your transfer details and click “Transfer”. You will receive a popup to confirm the transfer.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003514.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003514.png" alt="" width="375"><figcaption></figcaption></p>
 <p>Note if you have approved BUSD before, you will skip step 5 and see the below Transfer page.</p>
-<figure><img src=".gitbook/assets/Group 1000003515.png" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003515.png" alt="" width="375"><figcaption></figcaption></p>
 <ol start="7">
 <li>Make a final review and click Confirm Transfer button. Then you will be prompted with a confirmation on MetaMask.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003516.png" alt="" width="375"><figcaption></figcaption></figure>
-<figure><img src=".gitbook/assets/image (30).png" alt="" width="177"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003516.png" alt="" width="375"><figcaption></figcaption></p>
+<p><img src=".gitbook/assets/image (30).png" alt="" width="177"><figcaption></figcaption></p>
 <ol start="8">
 <li>Click “Confirm”, and your transaction will be submitted. Please wait for a few minutes as the bridging is in progress.</li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003517.png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003517.png" alt="" width="188"><figcaption></figcaption></p>
 <ol start="9">
 <li>You can check transaction status by clicking History button. </li>
 </ol>
-<figure><img src=".gitbook/assets/Group 1000003518.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003518.png" alt="" width="563"><figcaption></figcaption></p>
 <ol start="10">
 <li>Here are examples of transaction statuses. When it shows <strong>Completed</strong>, it means the transaction is done and the token should be received on Flow Cadence.</li>
 </ol>
-<div align="center"><figure><img src=".gitbook/assets/Group 1000003519.png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="center"><img src=".gitbook/assets/Group 1000003519.png" alt="" width="563"><figcaption></figcaption></div>
 
-<figure><img src=".gitbook/assets/Group 1000003520.png" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Group 1000003520.png" alt="" width="563"><figcaption></figcaption></p>
 <ol start="10">
 <li>You can also check token in your wallet.</li>
 </ol>
-<figure><img src=".gitbook/assets/image (34).png" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/image (34).png" alt="" width="188"><figcaption></figcaption></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="flow-evm-bridging-guide-1"><a href="#flow-evm-bridging-guide-1" class="header">Flow EVM Bridging Guide</a></h1>
-<hr>
-<h2 id="description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-of-usdc-from-ethereum-mainnet-to-flow-evm"><a class="header" href="#description---in-this-tutorial-we-will-guide-you-through-the-process-of-making-a-cross-chain-transfer-of-usdc-from-ethereum-mainnet-to-flow-evm">description: &gt;-
-In this tutorial, we will guide you through the process of making a
-cross-chain transfer of USDC from Ethereum Mainnet to Flow EVM.</a></h2>
 <h1 id="flow-evm-bridging-guide"><a class="header" href="#flow-evm-bridging-guide">Flow EVM Bridging Guide</a></h1>
 <h2 id="connect-your-wallet-3"><a class="header" href="#connect-your-wallet-3">Connect Your Wallet</a></h2>
 <p>Before you start transferring assets via <a href="https://cbridge.celer.network/1/747/USDC-intermediary">cBridge</a>, you will need to connect your wallet.</p>
 <p>1. Click “Connect Wallet”, and you will be prompted to select a wallet. (cBridge now supports MetaMask, TokenPocket, Coinbase Wallet, WalletConnect, Clover and OKX Wallet on desktop browsers).</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcm2wXsocvdWYQdlxz8NxDvxzj9H4CHm3ZLDJVevsQn7QNppS8qNA17NfDWy4wu0PjSjJYshqZ3wEUzyJPF2psrHfxVjfxSuRiG3oiHeYHu050majpUufknFnhau-Cr2y4CP38NgaydX-nAAd-OJWYcQGG1?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcm2wXsocvdWYQdlxz8NxDvxzj9H4CHm3ZLDJVevsQn7QNppS8qNA17NfDWy4wu0PjSjJYshqZ3wEUzyJPF2psrHfxVjfxSuRiG3oiHeYHu050majpUufknFnhau-Cr2y4CP38NgaydX-nAAd-OJWYcQGG1?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>2. Select your wallet.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWa2KKrG5fEj19ERjf38WagmnEJMslCm-NwTDcb-4W3l-unOA3IfaYzY-xxjtSpxpwUjddycf3IEAfobWsm_VkY4OcPrMl8y1r7UxpP43hkuog0jjL-hDIfw3JpS4JIXaN8kxuFcy2Yh54Bef0Wx-xXbQ?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWa2KKrG5fEj19ERjf38WagmnEJMslCm-NwTDcb-4W3l-unOA3IfaYzY-xxjtSpxpwUjddycf3IEAfobWsm_VkY4OcPrMl8y1r7UxpP43hkuog0jjL-hDIfw3JpS4JIXaN8kxuFcy2Yh54Bef0Wx-xXbQ?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="375"><figcaption></figcaption></p>
 <p>3. Allow cBridge to connect with your wallet.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXc3NaJPJAHuQJnNCEpxQhWGToL1ELFH_5CvyjvGTrwKaKfv4-QVXUZlfAazctaGiKjUkunIGRVk0lx3FhsFBJ0493i9W1wl8qu55rJzAYFEqfqAiVZnofq_x7xDDu8Sa9_b8aKwyL4FmKNGntEbv7Vl6dZI?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXc3NaJPJAHuQJnNCEpxQhWGToL1ELFH_5CvyjvGTrwKaKfv4-QVXUZlfAazctaGiKjUkunIGRVk0lx3FhsFBJ0493i9W1wl8qu55rJzAYFEqfqAiVZnofq_x7xDDu8Sa9_b8aKwyL4FmKNGntEbv7Vl6dZI?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></p>
 <p>4. Grant permissions to cBridge with necessary access to deliver the bridging actions accordingly.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe8h_8wtYEfPrli-3Rzyz77X9sowOY5G2sRRYxXYTccnnFeo7T9I7nAu6uQoitjADNLiV1iw-FdPk_TvbdHy-tf-6bF169nn-GaEl3MhkkhnJud1opFAjCTKHDNbbWYKLfG2pZCTxCOSiHJWmg54tY3oJo?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe8h_8wtYEfPrli-3Rzyz77X9sowOY5G2sRRYxXYTccnnFeo7T9I7nAu6uQoitjADNLiV1iw-FdPk_TvbdHy-tf-6bF169nn-GaEl3MhkkhnJud1opFAjCTKHDNbbWYKLfG2pZCTxCOSiHJWmg54tY3oJo?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></p>
 <h2 id="transfer-assets-across-chains-1"><a class="header" href="#transfer-assets-across-chains-1">Transfer Assets Across Chains</a></h2>
 <p>Let’s assume you want to transfer 100 USDC from Ethereum Mainnet to Flow EVM. The steps are made simple in cBridge:</p>
 <p>1. Select “Ethereum Mainnet” in the dropbox next to “From” and “Flow EVM” in the dropbox next to “To”.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXca0szKL2JgEg7JexD6WIJp3CtRMDuNfzpL9v5OKVa2b3uPzC-SHrJp1ZJQZnLV1zStm3L_rUV5H2ET6KNTbD2xux6rSOVnc4Xd6XK9ljTDKy5fUR959HPSnBusYau0OZT7UqAVKEzo4ndkWbhdtX9W6EcI?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXca0szKL2JgEg7JexD6WIJp3CtRMDuNfzpL9v5OKVa2b3uPzC-SHrJp1ZJQZnLV1zStm3L_rUV5H2ET6KNTbD2xux6rSOVnc4Xd6XK9ljTDKy5fUR959HPSnBusYau0OZT7UqAVKEzo4ndkWbhdtX9W6EcI?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>2. Enter the amount you want to send. You should see the estimated amount you will receive under “Receive (estimated)”.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdLZjOVxRym3ikFpZJlwBFrKNhL7cJcL-OLVIBhzSLbX826ncI__YLSvdibf5t6S5ZSw2TBcrzmJn7i3yBiMYlRhINauZZIstcrxZKyQy09Xfl-i3jN1sHSo7kuxKe6A6AFOeVdt1bnN3PDYmmV3dEjrc8?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdLZjOVxRym3ikFpZJlwBFrKNhL7cJcL-OLVIBhzSLbX826ncI__YLSvdibf5t6S5ZSw2TBcrzmJn7i3yBiMYlRhINauZZIstcrxZKyQy09Xfl-i3jN1sHSo7kuxKe6A6AFOeVdt1bnN3PDYmmV3dEjrc8?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>Note that there will be a difference between the amount you send and the amount you receive, which is determined by the bridge rate and fees. For the exact definition of each item in the transaction, check the tooltips next to each of the terms.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfUAshPIqpPQuwCCHXXwrveFpjFClgqaG921P20LupcMTMP3poFBjCHR9xqJS2vTttSFHQ7uvxb-EydEZV8tGxT5pAmLAfcQpD4DOhNV7BWlC295uiDO8VmmahA27UieLAuZPm63TM09wpauaPNG9NDtQc?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfUAshPIqpPQuwCCHXXwrveFpjFClgqaG921P20LupcMTMP3poFBjCHR9xqJS2vTttSFHQ7uvxb-EydEZV8tGxT5pAmLAfcQpD4DOhNV7BWlC295uiDO8VmmahA27UieLAuZPm63TM09wpauaPNG9NDtQc?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>3. Approve the token - You must give cBridge smart contracts permission to use your token (i.e. USDC in this case), which is an on-chain tx that consumes gas. </p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeAPQWx-lIyfEKeGjbBbq57t9M1Jt6BWZxUwLynAu_LOX4Qz0JqnkJhkOS0Bqpn0tNUjRZZ8nU9IG_3-hTkoOX7a3hcrxxP2V9-EYeNQposH4ZAbbPTRm8xWK_wH_A94d3kEHYgNSYBcJ7AjJFkQmaWR-Ud?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeAPQWx-lIyfEKeGjbBbq57t9M1Jt6BWZxUwLynAu_LOX4Qz0JqnkJhkOS0Bqpn0tNUjRZZ8nU9IG_3-hTkoOX7a3hcrxxP2V9-EYeNQposH4ZAbbPTRm8xWK_wH_A94d3kEHYgNSYBcJ7AjJFkQmaWR-Ud?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>4. Once the token is approved, you can then review the transfer details. As you agree to proceed the bridging in accordance with the stated transfer details, click “Transfer”. You will receive a popup window to confirm the transfer.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfXKRktgziQIEOrFxWLIja1OD7V_QBKJx0U8H-E2ceaYAqAoOTjsh_ll1SCKoM9J8KP7KxnP_FdO7c5TmqzFbZXmoCh1fbM0XOHPPcdNcjISDEzEAUnO8n1O7XGlTrmrLYuyGO8IFihNeIBJnLB3yusPglR?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfXKRktgziQIEOrFxWLIja1OD7V_QBKJx0U8H-E2ceaYAqAoOTjsh_ll1SCKoM9J8KP7KxnP_FdO7c5TmqzFbZXmoCh1fbM0XOHPPcdNcjISDEzEAUnO8n1O7XGlTrmrLYuyGO8IFihNeIBJnLB3yusPglR?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>5. Make a final review and click the “Confirm Transfer” button. Then you will be prompted with a confirmation on your wallet extension.</p>
-<figure><img src=".gitbook/assets/Screenshot 2024-10-17 at 1.36.21 PM.png" alt="" width="460"><figcaption></figcaption></figure>
+<p><img src=".gitbook/assets/Screenshot 2024-10-17 at 1.36.21 PM.png" alt="" width="460"><figcaption></figcaption></p>
 <p>6. Once clicked “Confirm” on the wallet interface, the transaction will be submitted. The cBridge page will also show a “Transfer submitted” window as shown below. Please wait for a few minutes as the bridging is in progress.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf7XYvFfVgCFoZGrUlQf3liW965NKTwmic-KsN8Mbpwh2RJmpp9eAicVecw02GzGP5H36iettpqZpUD2xE5eruXjem8Zl-drBfPGCH_LoLf1xPUKRGKE6F-tvb9Ip1SfM-noKzYtp_cDJ2naBLrbvdIQenZ?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></figure>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXccZlZA5IgZWE_125o7HIvKzaZh4hHQZsu_BAY5_ucFU3rkydz3CSTa_LfMq_TSkpODJavC6p-3MoKByOVlW6k_wrftUFNnrFk-fyyAUJYiZ2GEMI1S9lciAdWHWtXnUaua8OhAXFdQBs0E6-pLyC73aL9S?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="375"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf7XYvFfVgCFoZGrUlQf3liW965NKTwmic-KsN8Mbpwh2RJmpp9eAicVecw02GzGP5H36iettpqZpUD2xE5eruXjem8Zl-drBfPGCH_LoLf1xPUKRGKE6F-tvb9Ip1SfM-noKzYtp_cDJ2naBLrbvdIQenZ?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></p>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXccZlZA5IgZWE_125o7HIvKzaZh4hHQZsu_BAY5_ucFU3rkydz3CSTa_LfMq_TSkpODJavC6p-3MoKByOVlW6k_wrftUFNnrFk-fyyAUJYiZ2GEMI1S9lciAdWHWtXnUaua8OhAXFdQBs0E6-pLyC73aL9S?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="375"><figcaption></figcaption></p>
 <p>7. You can check the transaction status by clicking the “History” button.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfYvjNh4ZsaUZWfyzq_V2iRdUFaxm1R3j5UpU4UKKJfbS1i76X5Pu4QtVz9CSMikzcN9hHHAm2sw1myc0yU5ouyZ5rBtmmWxtPtymLDukzwm38CwBW3u1B2LtkNDhHbk0oTyoxX_rS4zh_ayBVqhlDbhHGc?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfYvjNh4ZsaUZWfyzq_V2iRdUFaxm1R3j5UpU4UKKJfbS1i76X5Pu4QtVz9CSMikzcN9hHHAm2sw1myc0yU5ouyZ5rBtmmWxtPtymLDukzwm38CwBW3u1B2LtkNDhHbk0oTyoxX_rS4zh_ayBVqhlDbhHGc?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>8. Here are some examples of the transaction statuses. When it shows Completed, it means that the wallet on Flow EVM has received the token.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeFjMB2sdMI74lKxEioDcA0v5OebGPlwhzAC7oVvq7p0UepZnj01enVzjHeCgjHDQKJEbxCZxuT0KzzJaH6wQqZOpOyRxCOy_T3ux8Drl8qRAer_jcrMjhzoxagwzjzyQffS_oPi1BddbpkQJ0uQScnyow?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXd1-iyEaem95-wVKlKE_1e5ZbSLqrUtkirEYpx7rMOyg89UJLWP49vrlg9A9aO6NhS9DNpcC9defktf3ip2l0hRgwYfsNmMObMYzaUaxJMxlCRMG-23V35fV1OBI57fSl4rjzQym_RitXy-2bh-uX99Fuyk?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfthDUvpNZ6byP0wcZ5jr8SpqlWMLAIoHztpvb1iqOgUIcT0MHjAlh4ZwR0dxlqmv2yn9OqzEjtlvWTWPJSzvgJVTvNvcSEzhYbHRemsu8qlwWr9MTIdzG9y_LatMJxa8E6c-QpMSoxq4itKS3S9fduYD0_?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeFjMB2sdMI74lKxEioDcA0v5OebGPlwhzAC7oVvq7p0UepZnj01enVzjHeCgjHDQKJEbxCZxuT0KzzJaH6wQqZOpOyRxCOy_T3ux8Drl8qRAer_jcrMjhzoxagwzjzyQffS_oPi1BddbpkQJ0uQScnyow?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXd1-iyEaem95-wVKlKE_1e5ZbSLqrUtkirEYpx7rMOyg89UJLWP49vrlg9A9aO6NhS9DNpcC9defktf3ip2l0hRgwYfsNmMObMYzaUaxJMxlCRMG-23V35fV1OBI57fSl4rjzQym_RitXy-2bh-uX99Fuyk?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfthDUvpNZ6byP0wcZ5jr8SpqlWMLAIoHztpvb1iqOgUIcT0MHjAlh4ZwR0dxlqmv2yn9OqzEjtlvWTWPJSzvgJVTvNvcSEzhYbHRemsu8qlwWr9MTIdzG9y_LatMJxa8E6c-QpMSoxq4itKS3S9fduYD0_?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="563"><figcaption></figcaption></p>
 <p>9. You can also check the received token through the wallet.</p>
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe37rB9kWVPcoFj5-HL3QLBfD9iwM3aTWf1nLK5KBG0CfEO1k0RW5RZTB5B97cJmLj3giph3VUJ62IQy2qF0yXF0MuS3TaJRp1DbPgmF0kx88CZ5cgAQyQw2jJdb70fsCkGsnzHKZWrpLzByhEZ7Mc22Ng?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></figure>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe37rB9kWVPcoFj5-HL3QLBfD9iwM3aTWf1nLK5KBG0CfEO1k0RW5RZTB5B97cJmLj3giph3VUJ62IQy2qF0yXF0MuS3TaJRp1DbPgmF0kx88CZ5cgAQyQw2jJdb70fsCkGsnzHKZWrpLzByhEZ7Mc22Ng?key=hA7YVnSfAyd3H34hw9RbNg" alt="" width="188"><figcaption></figcaption></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="circle-cross-chain-usdc-transfer-protocolcctp"><a class="header" href="#circle-cross-chain-usdc-transfer-protocolcctp">Circle Cross-chain USDC Transfer Protocol(CCTP)</a></h1>
 <p>For Circle Cross-Chain USDC Protocol supported chains, the USDC flow is going through Circle bridge contracts and its attestation service instead of cBridge or peg bridge contracts and SGN.</p>
 <p>The following content is an integration tutorial from frontend perspective.</p>
-<figure><img src=".gitbook/assets/image (41).png" alt=""><figcaption>
+<p><img src=".gitbook/assets/image (41).png" alt=""><figcaption>
 <p>CCPT flow</p>
-</figcaption></figure>
+</figcaption></p>
 <h2 id="proxy-contracts"><a class="header" href="#proxy-contracts">Proxy Contracts</a></h2>
 <table data-header-hidden="">
 <thead>
@@ -979,9 +967,8 @@ cross-chain transfer of USDC from Ethereum Mainnet to Flow EVM.</a></h2>
     }  
 </code></pre>
 <p><strong>API reference</strong></p>
-<p>{% content-ref url=“api-reference/gateway-gettransferstatus.md” %}
-<a href="#gateway-gettransferstatus-1">gateway-gettransferstatus.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#gateway-gettransferstatus">Link</a>
+<a href="#gateway-gettransferstatus">gateway-gettransferstatus.md</a></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="cbridge-sdk"><a class="header" href="#cbridge-sdk">cBridge SDK</a></h1>
 <p>cBridge SDK allows new and existing applications to integrate a rich <strong>subset of features</strong> that are available in the cBridge 2.0.  Simple imported libraries and packages allow you to quickly implement the cBridge transfer functionality into new and existing applications. </p>
@@ -1005,23 +992,18 @@ cross-chain transfer of USDC from Ethereum Mainnet to Flow EVM.</a></h2>
 <li>Inside cBridge gateway, there are some post APIs needing serialized byteArray as input. It takes some steps to prepare format accepted request information. Just in case you prefer RESTful api request, we will provide some examples for you accordingly</li>
 <li>Since cBridge iterates frequently, the best way to keep everything updated is using grpc. You can always check the latest grpc generated files and keep in touch with the newest cBridge gateway</li>
 </ol>
-<p>{% hint style=“info” %}
-<mark style="color:orange;">You can always use REST apis when communicating with cBridge gateway. We will provide examples and details in each api reference.</mark>
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+<mark style="color:orange;">You can always use REST apis when communicating with cBridge gateway. We will provide examples and details in each api reference.</mark></p>
+</blockquote>
 <h3 id="1-install-the-grpc-web"><a class="header" href="#1-install-the-grpc-web">1. Install the <a href="https://github.com/grpc/grpc-web">grpc-web</a> </a></h3>
 <p>To begin development with cBridge SDK, each developer needs to install grpc-web for cBridge gateway communication </p>
-<p>{% tabs %}
-{% tab title=“yarn” %}</p>
 <pre><code class="language-javascript">// Install via yarn
 yarn add grpc-web
 </code></pre>
-<p>{% endtab %}</p>
-<p>{% tab title=“npm” %}</p>
 <pre><code class="language-javascript">// Install via npm
 npm install grpc-web
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="2-download-cbridge-type-script-client-and-contract"><a class="header" href="#2-download-cbridge-type-script-client-and-contract">2. Download cBridge type-script client and contract </a></h3>
 <p>Download auto-generated protobuf files(including xxx_pb.d.ts, xxx_pb.js) in <a href="https://github.com/celer-network/cBridge-typescript-client">cBridge typescript client repo</a>. You can find all needed messages including client, request constructs and contracts there.</p>
 <h3 id="3-import-cbridge-sdk-into-your-projects"><a class="header" href="#3-import-cbridge-sdk-into-your-projects">3. Import cBridge SDK into your projects.</a></h3>
@@ -1043,9 +1025,8 @@ const response = await client.getTransferConfigs(request, null);
 </code></pre>
 <h2 id="api-reference"><a class="header" href="#api-reference">API Reference</a></h2>
 <p>Once you have integrated cBridge SDK into your project, dive into the specifics of each API by checking out our complete documentation.</p>
-<p>{% content-ref url=“api-reference/” %}
-<a href="developer/api-reference">api-reference</a>
-{% endcontent-ref %}</p>
+<p><a href="developer/api-reference">Link</a>
+<a href="developer/api-reference">api-reference</a></p>
 <h2 id="need-help"><a class="header" href="#need-help-1">Need help? <a href="#need-help-1" id="need-help-1"></a></a></h2>
 <p>If you’re looking for help, try join the <a href="https://discord.gg/Trhab5w">community Discord</a></p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -1082,13 +1063,14 @@ const response = await client.getTransferConfigs(request, null);
 <h1 id="transfer-refund-1"><a class="header" href="#transfer-refund-1">Transfer Refund</a></h1>
 <p>Once the user’s previous transfer status is <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark>, FE(front-end) needs to handle as follows to bring back user’s assets to his/her wallet:</p>
 <ol>
-<li>Polling <a href="#gateway-gettransferstatus-1">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
-<li>Submit on-chain withdraw request to cBridge contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus-1">GetTransferStatus</a> response</li>
+<li>Polling <a href="#gateway-gettransferstatus">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
+<li>Submit on-chain withdraw request to cBridge contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus">GetTransferStatus</a> response</li>
 <li>Once the refund transaction succeeds, the refund flow is complete.</li>
 </ol>
-<p>{% hint style=“info” %}
-Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="cbridge-canonical-mapping-transfer-xasset"><a class="header" href="#cbridge-canonical-mapping-transfer-xasset">cBridge Canonical Mapping Transfer (xAsset)</a></h1>
 <h2 id="terminology-1"><a class="header" href="#terminology-1">Terminology</a></h2>
@@ -1110,9 +1092,10 @@ Basically, it may take some time for gateway to prepare withdraw information. If
 <blockquote>
 <p>A user submit on-chain burn/withdraw request to the PeggedTokenBridge contract on pegged chain. Then user’s pegged tokens will be moved and burnt in the PeggedTokenBridge contract. Celer SGN will coordinate original tokens unlock and send back to user’s wallet address in OriginalTokenVault bridge on source chain.</p>
 </blockquote>
-<p>{% hint style=“warning” %}
-During the communication between you and cBridge gateway, you need to indicate it is a mint&amp;burn transfer flow. Otherwise, cBridge gateway will treat it as a general pool-based transfer and may lead to unexpected error
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+During the communication between you and cBridge gateway, you need to indicate it is a mint&amp;burn transfer flow. Otherwise, cBridge gateway will treat it as a general pool-based transfer and may lead to unexpected error</p>
+</blockquote>
 <pre><code class="language-javascript">// By refering pegged_pair_configs, we can determine whether 
 // it is a pegged transfer. 
 Scenario A:
@@ -1215,66 +1198,75 @@ Scenario B:
 <h1 id="mint"><a class="header" href="#mint">Mint</a></h1>
 <p>To mint pegged token for user on pegged chain,  FE(front-end) needs to do the following things:</p>
 <ol>
-<li>Get basic pegged configs through cBridge gateway. The same <a href="#gateway-gettransferconfigsforall-1">api</a> as general token transfer</li>
-<li>After collecting all needed information, always get updated estimation for the mint. The same <a href="#gateway-estimateamt-1">estimation api</a> as general token transfer</li>
+<li>Get basic pegged configs through cBridge gateway. The same <a href="#gateway-gettransferconfigsforall">api</a> as general token transfer</li>
+<li>After collecting all needed information, always get updated estimation for the mint. The same <a href="#gateway-estimateamt">estimation api</a> as general token transfer</li>
 <li>Check user’s on-chain token allowance for cBridge contract. If the allowance is not enough for mint, trigger the corresponding on-chain approve flow</li>
 <li>Submit on-chain deposit/mint request to cBridge OriginalTokenVault contract on source chain</li>
 <li>Get transfer status repeatedly to check whether the mint is complete.</li>
 </ol>
-<p>{% hint style=“success” %}
-Mint/Burn flow are quite similar to pool-based token transfer flow. However, it is simpler because there is no slippage-related transfer failure scenario. If user’s original token could be moved into OriginalTokenVault, peggedTokenBridge will mint and send corresponding pegged tokens to user’s wallet address on pegged chain.
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-If vault_version given by pegged_pair_config is 2, please use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVaultV2.sol">OriginalTokenVaultV2</a>. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVault.sol">OriginalTokenVault</a>  
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Mint/Burn flow are quite similar to pool-based token transfer flow. However, it is simpler because there is no slippage-related transfer failure scenario. If user’s original token could be moved into OriginalTokenVault, peggedTokenBridge will mint and send corresponding pegged tokens to user’s wallet address on pegged chain.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+If vault_version given by pegged_pair_config is 2, please use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVaultV2.sol">OriginalTokenVaultV2</a>. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/OriginalTokenVault.sol">OriginalTokenVault</a>  </p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="mint-refund"><a class="header" href="#mint-refund">Mint Refund</a></h1>
 <p>Once the user’s previous transfer status is <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark>, FE(front-end) needs to handle as follows to bring back user’s assets to his/her wallet:</p>
 <ol>
-<li>Polling <a href="#gateway-gettransferstatus-1">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
-<li>Submit on-chain withdraw request to cBridge <strong>OriginalTokenVault</strong> contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus-1">getTransferStatus</a> response</li>
+<li>Polling <a href="#gateway-gettransferstatus">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
+<li>Submit on-chain withdraw request to cBridge <strong>OriginalTokenVault</strong> contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus">getTransferStatus</a> response</li>
 <li>Once the refund transaction succeeds, the refund flow is complete.</li>
 </ol>
-<p>{% hint style=“warning” %}
- Because of no slippage constraints, the possibility of deposit/mint flow failure is pretty low. Once mint flow failed with source chain deposit transaction, you will need to withdraw user’s assets.  The whole refund flow is the same as <a href="developer/cbridge-pool-based-transfer-xliquidity#transfer-refund">pool-based transfer flow</a>. However, you should communicate with <strong>OriginalTokenVault</strong> contract for this refund
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-You should submit transaction to <strong>OriginalTokenVaultV2</strong> if you interact with <strong>OriginalTokenVaultV2</strong> for the previous transfer
-{% endhint %}</p>
-<p>{% hint style=“info” %}
-Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+ Because of no slippage constraints, the possibility of deposit/mint flow failure is pretty low. Once mint flow failed with source chain deposit transaction, you will need to withdraw user’s assets.  The whole refund flow is the same as <a href="developer/cbridge-pool-based-transfer-xliquidity#transfer-refund">pool-based transfer flow</a>. However, you should communicate with <strong>OriginalTokenVault</strong> contract for this refund</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+You should submit transaction to <strong>OriginalTokenVaultV2</strong> if you interact with <strong>OriginalTokenVaultV2</strong> for the previous transfer</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="burn"><a class="header" href="#burn">Burn</a></h1>
 <p>To withdraw user’s original token on original chain,  FE(front-end) needs to do the following things:</p>
 <ol>
-<li>Get basic pegged configs through cBridge gateway. The same <a href="#gateway-gettransferconfigsforall-1">api</a> as general token transfer</li>
+<li>Get basic pegged configs through cBridge gateway. The same <a href="#gateway-gettransferconfigsforall">api</a> as general token transfer</li>
 <li>Check user’s on-chain token allowance for cBridge PeggedTokenBridge contract. If the allowance is not enough for burn, trigger the corresponding on-chain approve flow</li>
 <li>Submit on-chain burn request to cBridge PeggedTokenBridge contract on pegged chain</li>
 <li>Get transfer status repeatedly to check whether the burn/withdraw is complete.</li>
 </ol>
-<p>{% hint style=“warning” %}
-If bridge_version given by pegged_pair_config is 2, you should submit transaction using <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridgeV2.sol">PeggedTokenBridgeV2</a> abi. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridge.sol">PeggedTokenBridge</a>. The parameters of burn function are different since PeggedTokenBridgeV2 supports <a href="#undefined">Burn-Mint mode</a>.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If bridge_version given by pegged_pair_config is 2, you should submit transaction using <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridgeV2.sol">PeggedTokenBridgeV2</a> abi. Otherwise, use <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/pegged-bridge/PeggedTokenBridge.sol">PeggedTokenBridge</a>. The parameters of burn function are different since PeggedTokenBridgeV2 supports <a href="#undefined">Burn-Mint mode</a>.</p>
+</blockquote>
 <h3 id="burn-mint-peggedtokenbridgev2-only"><a class="header" href="#burn-mint-peggedtokenbridgev2-only">Burn-Mint (PeggedTokenBridgeV2 only)</a></h3>
 <p>Unlike PeggedTokenBridge, you can burn canonical token on pegged chain where PeggedTokenBridgeV2 is deployed and Celer SGN will mint corresponding tokens on another pegged chain if both pegged chains share the same <a href="#peggedpairconfig">original chain id</a> and the same <a href="#peggedpairconfig">original token</a>. In this scenario, the user can skip interaction with OriginalTokenVault and have a better experience for his assets transfer. </p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="burn-refund"><a class="header" href="#burn-refund">Burn Refund</a></h1>
 <p>Once the user’s previous transfer status is <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark>, FE(front-end) needs to handle as follows to bring back user’s assets to his/her wallet:</p>
 <ol>
-<li>Polling <a href="#gateway-gettransferstatus-1">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
-<li>Submit on-chain mint request to cBridge <strong>PeggedTokenBridge</strong> contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus-1">getTransferStatus</a> response</li>
+<li>Polling <a href="#gateway-gettransferstatus">GetTransferStatus</a> until transfer status is <a href="#xferstatus-enum"><mark style="color:yellow;">TRANSFER_TO_BE_CONFIRMED</mark></a></li>
+<li>Submit on-chain mint request to cBridge <strong>PeggedTokenBridge</strong> contract with information provided by cBridge gateway in <a href="#gateway-gettransferstatus">getTransferStatus</a> response</li>
 <li>Once the refund transaction succeeds, the refund flow is complete.</li>
 </ol>
-<p>{% hint style=“warning” %}
- If burn flow failed, it means the canonical tokens have been burnt. To bring them back, you should tell cBridge <strong>PeggedTokenBridge</strong> contract to <strong>mint</strong> corresponding tokens. 
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-You should submit transaction to <strong>PeggedTokenBridgeV2</strong> if you interact with <strong>PeggedTokenBridgeV2</strong> for the previous transfer
-{% endhint %}</p>
-<p>{% hint style=“info” %}
-Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+ If burn flow failed, it means the canonical tokens have been burnt. To bring them back, you should tell cBridge <strong>PeggedTokenBridge</strong> contract to <strong>mint</strong> corresponding tokens. </p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+You should submit transaction to <strong>PeggedTokenBridgeV2</strong> if you interact with <strong>PeggedTokenBridgeV2</strong> for the previous transfer</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+Basically, it may take some time for gateway to prepare withdraw information. If the transfer status is stuck as <mark style="color:red;">TRANSFER_TO_BE_REFUNDED</mark> more than 30 minutes, you may contact our custom support</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="cbridge-transfer-web-widget"><a class="header" href="#cbridge-transfer-web-widget">cBridge Transfer Web Widget</a></h1>
 <p>To make widget integration simple, we provide complete source files which support cBridge transfer.</p>
@@ -1317,32 +1309,23 @@ import CBridgeTransferWidget from './cBridgeTransferWidget';
 <li>Submit transfer transaction through <strong>TransferAgent</strong> contract on EVM chains</li>
 <li>Submit transfer transaction to Aptos Modules(Vault for deposit, PegBridge for burn) deployed by cBridge.</li>
 </ul>
-<p>{% hint style=“warning” %}
-To avoid chain id conflict, Celer SGN reserves <mark style="color:red;"><strong>12360001</strong></mark> as <mark style="color:red;"><strong>Aptos Mainnet</strong></mark> Chain Id, <mark style="color:orange;"><strong>12360002</strong></mark> as <mark style="color:orange;"><strong>Aptos Testnet</strong></mark> Chain Id and <mark style="color:blue;"><strong>12360003</strong></mark> as <mark style="color:blue;"><strong>Aptos Devnet</strong></mark> Chain Id.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+To avoid chain id conflict, Celer SGN reserves <mark style="color:red;"><strong>12360001</strong></mark> as <mark style="color:red;"><strong>Aptos Mainnet</strong></mark> Chain Id, <mark style="color:orange;"><strong>12360002</strong></mark> as <mark style="color:orange;"><strong>Aptos Testnet</strong></mark> Chain Id and <mark style="color:blue;"><strong>12360003</strong></mark> as <mark style="color:blue;"><strong>Aptos Devnet</strong></mark> Chain Id.</p>
+</blockquote>
 <h2 id="submit-transfer-through-transferagent-contract-on-evm"><a class="header" href="#submit-transfer-through-transferagent-contract-on-evm">Submit transfer through <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/proxy/TransferAgent.sol">TransferAgent</a> contract on EVM </a></h2>
 <p>Unlike EVM wallet address, Aptos wallet uses <mark style="color:blue;"><strong>32</strong></mark> bytes hex string as address. Then you <mark style="color:red;"><strong>cannot</strong></mark> submit transfer transaction <strong>using Aptos wallet address as destination receiver</strong> through cBridge <strong>OriginalTokenVault</strong> / <strong>PeggedBridge</strong> contract. Hence, cBridge deploys a TransferAgent contract which can use any length string as destination receiver.</p>
-<p>{% content-ref url=“api-reference/contract-transferagent-mint-token-submission.md” %}
-<a href="#contract-transferagent-mint-token-submission-1">contract-transferagent-mint-token-submission.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“api-reference/contract-transferagent-burn-token-submission.md” %}
-<a href="#contract-transferagent-burn-token-submission-1">contract-transferagent-burn-token-submission.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#contract-transferagent-mint-token-submission">Link</a>
+<a href="#contract-transferagent-mint-token-submission">contract-transferagent-mint-token-submission.md</a></p>
+<p><a href="#contract-transferagent-burn-token-submission">Link</a>
+<a href="#contract-transferagent-burn-token-submission">contract-transferagent-burn-token-submission.md</a></p>
 <h2 id="submit-transfer-on-aptos-chain"><a class="header" href="#submit-transfer-on-aptos-chain">Submit transfer on Aptos Chain</a></h2>
 <p>You can refer <a href="https://aptos.dev/guides/aptos-guides">this</a> to submit transaction on Aptos</p>
-<p>{% content-ref url=“api-reference/contract-aptos-vault-mint-token-submission.md” %}
-<a href="#contract-aptos-vault-mint-token-submission-1">contract-aptos-vault-mint-token-submission.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“api-reference/contract-aptos-pegbridge-burn-token-submission.md” %}
-<a href="#contract-aptos-pegbridge-burn-token-submission-1">contract-aptos-pegbridge-burn-token-submission.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#contract-aptos-vault-mint-token-submission">Link</a>
+<a href="#contract-aptos-vault-mint-token-submission">contract-aptos-vault-mint-token-submission.md</a></p>
+<p><a href="#contract-aptos-pegbridge-burn-token-submission">Link</a>
+<a href="#contract-aptos-pegbridge-burn-token-submission">contract-aptos-pegbridge-burn-token-submission.md</a></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="custom-transfer-url-schemes-1"><a href="#custom-transfer-url-schemes-1" class="header">Custom Transfer URL Schemes</a></h1>
-<hr>
-<h2 id="description---custom-transfer-url-schemes-are-useful-for-predefined-token-transfer-from-specific-chain-to-another-here-is-a-simple-flow-to-build-a-custom-cbridge-transfer-url"><a class="header" href="#description---custom-transfer-url-schemes-are-useful-for-predefined-token-transfer-from-specific-chain-to-another-here-is-a-simple-flow-to-build-a-custom-cbridge-transfer-url">description: &gt;-
-Custom transfer url schemes are useful for predefined token transfer from
-specific chain to another. Here is a simple flow to build a custom cBridge
-transfer url</a></h2>
 <h1 id="custom-transfer-url-schemes"><a class="header" href="#custom-transfer-url-schemes">Custom Transfer URL Schemes</a></h1>
 <h2 id="scheme-example"><a class="header" href="#scheme-example">Scheme example</a></h2>
 <p>To build a custom transfer url scheme, you only need to provide 3 values: <mark style="color:purple;">sourceChainId</mark>, <mark style="color:purple;">destinationChainId</mark> and <mark style="color:purple;">tokenSymbol</mark>. The format of the url is <mark style="color:red;"><strong>https://cbridge.celer.network/sourceChainId/destinationChainId/tokenSymbol</strong></mark>. For example, if you want users to transfer xToken from Ethereum Mainnet to Arbitrum, you can use this link:<a href="https://cbridge.celer.network/1/42161/XTK"> </a><a href="https://cbridge.celer.network/1/42161/XTK">https://cbridge.celer.network/1/42161/XTK</a>. After user clicks the link, cBridge website will provide a well-defined UI for the user.</p>
@@ -1549,22 +1532,17 @@ const resultJson = (result as any)?.data?.content?.fields?.cap?.fields?.total_su
 
 <p>\</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="referral-specific-transfer-1"><a href="#referral-specific-transfer-1" class="header">Referral Specific Transfer</a></h1>
-<hr>
-<h2 id="description---referral-code-is-treated-as-the-provider-mark-for-a-transfer-to-provide-a-better-insight-about-users-transfer-behavior-you-can-attach-your-referral-code-to-cbridge-gateway"><a class="header" href="#description---referral-code-is-treated-as-the-provider-mark-for-a-transfer-to-provide-a-better-insight-about-users-transfer-behavior-you-can-attach-your-referral-code-to-cbridge-gateway">description: &gt;-
-Referral code is treated as the provider mark for a transfer. To provide a
-better insight about users’ transfer behavior, you can attach your referral
-code to cBridge gateway.</a></h2>
 <h1 id="referral-specific-transfer"><a class="header" href="#referral-specific-transfer">Referral Specific Transfer</a></h1>
 <h2 id="referral-code-inside-cbridge-website"><a class="header" href="#referral-code-inside-cbridge-website">Referral code inside cBridge website</a></h2>
 <p>You can attach your referral code to cBridge website. When user uses the URL with referral code, cBridge website will help build relationship between your referral code and user’s on-chain transaction. Here is the sample link for the referral code </p>
 <pre><code>https://cbridge.celer.network/#/transfer?ref={your_provider_name}
 </code></pre>
-<p>{% hint style=“info” %}
-Please use the correct parameter key for referral code, which is <mark style="color:red;">ref</mark>. Otherwise, cBridge website will not recognize your referral code
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Please use the correct parameter key for referral code, which is <mark style="color:red;">ref</mark>. Otherwise, cBridge website will not recognize your referral code</p>
+</blockquote>
 <h2 id="referral-code-through-cbridge-sdk"><a class="header" href="#referral-code-through-cbridge-sdk">Referral code through cBridge SDK</a></h2>
-<p>When integrating with cBridge SDK, you can establish relation between your ref code and user’s on-chain transaction by posting <a href="#gateway-markrefrelation-1">markRefRelation</a> request to cBridge gateway. You may refer <a href="#gateway-markrefrelation-1">this</a> for more details.</p>
+<p>When integrating with cBridge SDK, you can establish relation between your ref code and user’s on-chain transaction by posting <a href="#gateway-markrefrelation">markRefRelation</a> request to cBridge gateway. You may refer <a href="#gateway-markrefrelation">this</a> for more details.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="cbridge-limit-parameters"><a class="header" href="#cbridge-limit-parameters">cBridge Limit Parameters</a></h1>
 <p>There are certain rules limiting on source and destination chains for security purposes. When transferring assets through cBridge, it’s essential to check these limit parameters beforehand.</p>
@@ -1572,23 +1550,24 @@ Please use the correct parameter key for referral code, which is <mark style="co
 <h4 id="1--minsendmaxsend"><a class="header" href="#1--minsendmaxsend">1.  minSend/maxSend</a></h4>
 <p>The sending amount range is <mark style="color:red;">(minSend, maxSend]</mark>, for Pool-based transfer, you can get the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/4d742f6c337f06777947a73accd9f78239de92ee/contracts/liquidity-bridge/Bridge.sol#L41">minSend</a>/<a href="https://github.com/celer-network/sgn-v2-contracts/blob/4d742f6c337f06777947a73accd9f78239de92ee/contracts/liquidity-bridge/Bridge.sol#L42">minMax</a> on source chain <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/liquidity-bridge/Bridge.sol">Bridge contract</a>, the address is the token address on source chain. </p>
 <p>The screenshot is an example to get the USDC minSend Value on Ethereum.</p>
-<div align="center" data-full-width="true"><figure><img src=".gitbook/assets/image (35).png" alt=""><figcaption>
+<div align="center" data-full-width="true"><img src=".gitbook/assets/image (35).png" alt=""><figcaption>
 <p>Example of getting the USDC minSend Value on Ethereum</p>
-</figcaption></figure></div>
+</figcaption></div>
 
 <p>Note if the transfer token is ETH, use the WETH token address as the query key.</p>
 <h4 id="2-pool-cap"><a class="header" href="#2-pool-cap">2. pool cap</a></h4>
 <p>The pool cap signifies the maximum volume allowed in this pool. Once the pool cap of the source chain is reached, transfers of the token from this chain are temporarily suspended until the volume decreases below the cap.</p>
 <p>The sending amount should be matched the rule of <mark style="color:red;">sending amount + current volume &lt;= pool cap</mark></p>
-<p>To check pool cap by handling the error in <a href="#gateway-estimateamt-1">estimateAmt</a> api when you quote the transfer.</p>
+<p>To check pool cap by handling the error in <a href="#gateway-estimateamt">estimateAmt</a> api when you quote the transfer.</p>
 <p>The error code</p>
 <pre><code class="language-typescript">ERROR_CODE_LIQ_OVER_CAP // 1017
 </code></pre>
 <p>Error Message:</p>
 <p>You can transfer up to {<code>remainning_amount</code>} {<code>token_symbol</code>} at this moment. You may reduce your transfer amount. the <code>remainning_amount</code> = <code>pool</code> -  <code>current volume</code></p>
-<p>{% hint style=“info” %}
-(Aside) The pool cap limit value can be read from the <code>inbound_lmt</code> field in the <a href="https://cbridge-prod2.celer.app/v1/getTransferConfigsForAll">configuration</a> file.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+(Aside) The pool cap limit value can be read from the <code>inbound_lmt</code> field in the <a href="https://cbridge-prod2.celer.app/v1/getTransferConfigsForAll">configuration</a> file.</p>
+</blockquote>
 <h3 id="destination-chain"><a class="header" href="#destination-chain">Destination Chain</a></h3>
 <h4 id="1-big-amount-delay"><a class="header" href="#1-big-amount-delay">1. Big amount delay</a></h4>
 <p>If the sending amount is greater than an on-chain threshold, the transaction might be delayed for a while due to security reasons. You can retrieve these parameters from the destination chain.</p>
@@ -1607,66 +1586,51 @@ if (lastOpTimestamps[_token] &lt; epochStartTime) {
 require(volume &lt;= cap, "volume exceeds cap");
 </code></pre>
 <p>You can obtain the <code>epochVolumeCaps</code> , <code>lastOpTimestamps</code>, <code>epochLength</code> and corresponding token <code>epochVolumes</code> from the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/main/contracts/safeguard/VolumeControl.sol">VolumeControl</a> Contract, which has been implemented by the Bridge Contract. The accumulated volume in this period must be lower than the value specified by the “<code>epochVolumeCaps</code>”. </p>
-<div align="center"><figure><img src=".gitbook/assets/image (36).png" alt=""><figcaption>
+<div align="center"><img src=".gitbook/assets/image (36).png" alt=""><figcaption>
 <p>Example of getting epochVolumeCaps from Ethereum pool.</p>
-</figcaption></figure></div>
+</figcaption></div>
 
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="api-reference-1"><a class="header" href="#api-reference-1">API Reference</a></h1>
-<p>{% hint style=“info” %}
-All APIs will have a prefix to indicate whether it is a cBridge gateway function or a cBridge contract on-chain function.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+All APIs will have a prefix to indicate whether it is a cBridge gateway function or a cBridge contract on-chain function.</p>
+</blockquote>
 <h3 id="get-transfer-configs"><a class="header" href="#get-transfer-configs">Get Transfer Configs</a></h3>
 <p>Get chains and tokens info supported by cBridge.</p>
-<p>{% content-ref url=“gateway-gettransferconfigsforall.md” %}
-<a href="#gateway-gettransferconfigsforall-1">gateway-gettransferconfigsforall.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#gateway-gettransferconfigsforall">Link</a>
+<a href="#gateway-gettransferconfigsforall">gateway-gettransferconfigsforall.md</a></p>
 <h3 id="transfer-flow"><a class="header" href="#transfer-flow">Transfer Flow</a></h3>
 <p>When all needed information is ready, make an <em><mark style="color:purple;"><strong>estimation</strong></mark></em> for this transfer first. Then, submit an on-chain <em><mark style="color:blue;"><strong>send</strong></mark></em> transaction. Poll <em><mark style="color:red;"><strong>getTransferStatus</strong></mark></em> for this transaction until the transfer is complete or needs a refund.</p>
-<p>{% content-ref url=“gateway-estimateamt.md” %}
-<a href="#gateway-estimateamt-1">gateway-estimateamt.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-pool-based-transfer.md” %}
-<a href="#contract-pool-based-transfer-1">contract-pool-based-transfer.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“gateway-gettransferstatus.md” %}
-<a href="#gateway-gettransferstatus-1">gateway-gettransferstatus.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#gateway-estimateamt">Link</a>
+<a href="#gateway-estimateamt">gateway-estimateamt.md</a></p>
+<p><a href="#contract-pool-based-transfer">Link</a>
+<a href="#contract-pool-based-transfer">contract-pool-based-transfer.md</a></p>
+<p><a href="#gateway-gettransferstatus">Link</a>
+<a href="#gateway-gettransferstatus">gateway-gettransferstatus.md</a></p>
 <h3 id="transfer-refund-flow"><a class="header" href="#transfer-refund-flow">Transfer Refund Flow</a></h3>
 <p>When the transfer status is <mark style="color:yellow;">TRANSFER_TO_BE_REFUNDED</mark>, cBridge gateway will prepare on-chain refund transaction info automatically within several minutes. Polling getTransferStatus and submit on-chain transaction based on failed transfer type. </p>
-<p>{% content-ref url=“gateway-gettransferstatus.md” %}
-<a href="#gateway-gettransferstatus-1">gateway-gettransferstatus.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-pool-based-transfer-refund.md” %}
-<a href="#contract-pool-based-transfer-refund-1">contract-pool-based-transfer-refund.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-mint-canonical-token-transfer-refund.md” %}
-<a href="#contract-mint-canonical-token-transfer-refund-1">contract-mint-canonical-token-transfer-refund.md</a>
-{% endcontent-ref %}</p>
-<p>{% content-ref url=“contract-burn-canonical-token-transfer-refund.md” %}
-<a href="#contract-burn-canonical-token-transfer-refund-1">contract-burn-canonical-token-transfer-refund.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#gateway-gettransferstatus">Link</a>
+<a href="#gateway-gettransferstatus">gateway-gettransferstatus.md</a></p>
+<p><a href="#contract-pool-based-transfer-refund">Link</a>
+<a href="#contract-pool-based-transfer-refund">contract-pool-based-transfer-refund.md</a></p>
+<p><a href="#contract-mint-canonical-token-transfer-refund">Link</a>
+<a href="#contract-mint-canonical-token-transfer-refund">contract-mint-canonical-token-transfer-refund.md</a></p>
+<p><a href="#contract-burn-canonical-token-transfer-refund">Link</a>
+<a href="#contract-burn-canonical-token-transfer-refund">contract-burn-canonical-token-transfer-refund.md</a></p>
 <h3 id="transfer-history-query"><a class="header" href="#transfer-history-query">Transfer History Query</a></h3>
-<p>{% content-ref url=“gateway-transferhistory.md” %}
-<a href="#gateway-transferhistory-1">gateway-transferhistory.md</a>
-{% endcontent-ref %}</p>
+<p><a href="#gateway-transferhistory">Link</a>
+<a href="#gateway-transferhistory">gateway-transferhistory.md</a></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="gateway-gettransferconfigsforall-1"><a href="#gateway-gettransferconfigsforall-1" class="header">Gateway: GetTransferConfigsForAll</a></h1>
-<hr>
-<h2 id="description-get-transfer-configs-for-cbridge-transfer-functionality"><a class="header" href="#description-get-transfer-configs-for-cbridge-transfer-functionality">description: Get transfer configs for cBridge transfer functionality</a></h2>
 <h1 id="gateway-gettransferconfigsforall"><a class="header" href="#gateway-gettransferconfigsforall">Gateway: GetTransferConfigsForAll</a></h1>
 <h3 id="rest-api"><a class="header" href="#rest-api">REST API</a></h3>
 <h2 id="get-chains-and-corresponding-tokens-supported-by-cbridge"><a class="header" href="#get-chains-and-corresponding-tokens-supported-by-cbridge">Get chains and corresponding tokens supported by cBridge</a></h2>
 <p><mark style="color:blue;"><code>GET</code></mark> <code>https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll</code></p>
 <p>By using this method, you can find chains’ and tokens’ information for cBridge testnet transfer, you can use cBridge production endpoint for mainnet configs</p>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
     // Response
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="request-parameters"><a class="header" href="#request-parameters">Request Parameters</a></h2>
 <p>None</p>
 <h2 id="response-parameters"><a class="header" href="#response-parameters">Response Parameters</a></h2>
@@ -1739,9 +1703,10 @@ All APIs will have a prefix to indicate whether it is a cBridge gateway function
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If transfer_disabled or xfer_disabled is true, we cannot transfer the token on the corresponding chain
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If transfer_disabled or xfer_disabled is true, we cannot transfer the token on the corresponding chain</p>
+</blockquote>
 <h3 id="peggedpairconfig"><a class="header" href="#peggedpairconfig">PeggedPairConfig</a></h3>
 <div class="table-wrapper">
 <table>
@@ -1760,13 +1725,11 @@ If transfer_disabled or xfer_disabled is true, we cannot transfer the token on t
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-All data inside the configs should not be edited, otherwise it may lead to failure.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+All data inside the configs should not be edited, otherwise it may lead to failure.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="gateway-estimateamt-1"><a href="#gateway-estimateamt-1" class="header">Gateway: EstimateAmt</a></h1>
-<hr>
-<h2 id="description-get-estimation-for-the-users-transfer-request"><a class="header" href="#description-get-estimation-for-the-users-transfer-request">description: Get estimation for the user’s transfer request.</a></h2>
 <h1 id="gateway-estimateamt"><a class="header" href="#gateway-estimateamt">Gateway: EstimateAmt</a></h1>
 <h3 id="rest-api-1"><a class="header" href="#rest-api-1">REST API</a></h3>
 <h2 id="get-estimation-for-the-users-transfer-request"><a class="header" href="#get-estimation-for-the-users-transfer-request">Get estimation for the user’s transfer request</a></h2>
@@ -1790,8 +1753,6 @@ All data inside the configs should not be edited, otherwise it may lead to failu
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "eq_value_token_amt": "1000000999999999872",
@@ -1804,8 +1765,6 @@ All data inside the configs should not be edited, otherwise it may lead to failu
   "drop_gas_amt": "0"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api"><a class="header" href="#grpc-web-api">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">// import estimateAmt request message 
 import { 
@@ -1846,17 +1805,19 @@ const res = await client.estimateAmt(estimateRequest, null);
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 Which value is suitable for <mark style="color:red;">slippage_tolerance</mark>?</p>
+</blockquote>
 <p>cBridge gateway uses <mark style="color:orange;">slippage_tolerance_rate</mark> to represent user’s slippage for on-chain transaction. The range of <mark style="color:orange;">slippage_tolerance_rate</mark> is from [0, 1)</p>
 <p>The calculation formula between <mark style="color:red;">slippage_tolerance</mark> and slippage_tolerance_rate is</p>
 <p><mark style="color:orange;">slippage_tolerance_rate</mark> = <mark style="color:red;">slippage_tolerance / 1M</mark></p>
 <p>Hence, if the user sets slippage_tolerance with 0.05%, <mark style="color:red;">slippage_tolerance</mark> in the request will be 0.05% * 1M = 500</p>
-<p>Moreover, if the user sets slippage_tolerance with 0.050123%, the calculation will lead to 0.050123% * 1M = 501.23. However, gateway will only accept <mark style="color:green;">integer</mark> as <mark style="color:red;">slippage_tolerance.</mark> The final value should be <mark style="color:red;">501</mark>
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-You need to find out whether this transfer is used for pegged token according to <a href="#peggedpairconfig">PeggedPairConfigs</a>. Moreover, slippage will not be effective if is_pagged is true
-{% endhint %}</p>
+<p>Moreover, if the user sets slippage_tolerance with 0.050123%, the calculation will lead to 0.050123% * 1M = 501.23. However, gateway will only accept <mark style="color:green;">integer</mark> as <mark style="color:red;">slippage_tolerance.</mark> The final value should be <mark style="color:red;">501</mark></p>
+<blockquote>
+<p><strong>Note:</strong>
+You need to find out whether this transfer is used for pegged token according to <a href="#peggedpairconfig">PeggedPairConfigs</a>. Moreover, slippage will not be effective if is_pagged is true</p>
+</blockquote>
 <h2 id="response-parameters-1"><a class="header" href="#response-parameters-2">Response Parameters <a href="#response-parameters-2" id="response-parameters-2"></a></a></h2>
 <div class="table-wrapper">
 <table>
@@ -1876,28 +1837,32 @@ You need to find out whether this transfer is used for pegged token according to
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 How to calculate max_slippage?</p>
+</blockquote>
 <p>There are several factors influencing the final value for max_slippage, all of them are inside the response. Since we cannot guarantee user receiving more tokens on destination chain, there is slippage adjustment in the end.</p>
 <ol>
 <li>estimate_dst_amt = user_transfer_amount_on_src_chain * bridge_rate</li>
 <li>estimate_min_dst_amt = estimate_dst_amt * (1 - slippage_tolerance_rate) - base_fee - perc_fee</li>
 <li>max_slippage_rate = 1 - estimate_min_dst_amt / user_transfer_amount_on_src_chain</li>
-<li>max_slippage = max(max_slippage_rate * 1M, minimalMaxSlippage)
-{% endhint %}</li>
+<li>max_slippage = max(max_slippage_rate * 1M, minimalMaxSlippage)</li>
 </ol>
-<p>{% hint style=“info” %}
+<blockquote>
+<p><strong>Note:</strong>
 Minimum receiving amount calculation</p>
-<p>amount = eq_value_token_amt  *  (1 - max_slippage/1M)
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
+</blockquote>
+<p>amount = eq_value_token_amt  *  (1 - max_slippage/1M)</p>
+<blockquote>
+<p><strong>Note:</strong>
 The on-chain send transaction failed <em><strong>mostly when slippage is too small to be processed by cBridge system.</strong></em> </p>
+</blockquote>
 <p>To avoid the potential on-chain failure and waste of gas, we recommend you compare max_slippage with minimalMaxSlippage on cBridge contract before sending on-chain  transaction. If max_slippage is less than minimalMaxSlippage, guide user increasing input value slippage_tolerance.</p>
-<p>Moreover, since max_slippage, bridge_rate, perc_fee and base_fee may change when user interacting with your application, we should get the lastest estimation before final submit to avoid <a href="#contract-pool-based-transfer-1">on-chain send</a> failure.
-{% endhint %}</p>
-<p>{% hint style=“danger” %}
-The cross-chain transfer is accepted only. if src_chain_id is the same as dst_chain_id, it may lead to an error
-{% endhint %}</p>
+<p>Moreover, since max_slippage, bridge_rate, perc_fee and base_fee may change when user interacting with your application, we should get the lastest estimation before final submit to avoid <a href="#contract-pool-based-transfer">on-chain send</a> failure.</p>
+<blockquote>
+<p><strong>Note:</strong>
+The cross-chain transfer is accepted only. if src_chain_id is the same as dst_chain_id, it may lead to an error</p>
+</blockquote>
 <h2 id="error-handling"><a class="header" href="#error-handling">Error handling</a></h2>
 <h3 id="error-code-description"><a class="header" href="#error-code-description">Error Code Description</a></h3>
 <table>
@@ -1942,22 +1907,12 @@ The cross-chain transfer is accepted only. if src_chain_id is the same as dst_ch
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "median_transfer_latency_in_second": 325.818221
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-pool-based-transfer-1"><a href="#contract-pool-based-transfer-1" class="header">Contract: Pool-Based Transfer</a></h1>
-<hr>
-<h2 id="description---trigger-cbridge-contract-send-function-to-move-users-assets-to-cbridge-contract-on-source-chain-then-cbridge-gateway-and-celer-sgn-will-send-assets-to-the-users-asset-on-the-destination-chain"><a class="header" href="#description---trigger-cbridge-contract-send-function-to-move-users-assets-to-cbridge-contract-on-source-chain-then-cbridge-gateway-and-celer-sgn-will-send-assets-to-the-users-asset-on-the-destination-chain">description: &gt;-
-Trigger cBridge contract <code>send</code> function to move user’s assets to cBridge
-contract on source chain. Then cBridge gateway and Celer SGN will send assets
-to the user’s asset on the destination chain</a></h2>
 <h1 id="contract-pool-based-transfer"><a class="header" href="#contract-pool-based-transfer">Contract: Pool-Based Transfer</a></h1>
 <h2 id="implementation-1"><a class="header" href="#implementation-1">Implementation</a></h2>
 <p>Pool-based transfers are done via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol">Bridge</a> contract, specifically via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol#L56">send</a> or <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/Bridge.sol#L79">sendNative</a> functions. For advanced users, these two functions can be called from smart contracts, but please read the <a href="#transfer-refund-1">refund process</a> before you proceed.</p>
@@ -2012,14 +1967,16 @@ const transferTx = await transactor(
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If you want to use a max_slippage with your own calculation, please make sure it is not less than <a href="https://github.com/celer-network/cBridge-typescript-client/blob/c434598005a44334bdb6fa22979da8b253eeaa86/contract/Bridge.d.ts#L769">minimalMaxSlippage</a> given by cBridge contract. Otherwise, the transaction will fail. 
-{% endhint %}</p>
-<p>{% hint style=“warning” %}
-If <code>receiver</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If you want to use a max_slippage with your own calculation, please make sure it is not less than <a href="https://github.com/celer-network/cBridge-typescript-client/blob/c434598005a44334bdb6fa22979da8b253eeaa86/contract/Bridge.d.ts#L769">minimalMaxSlippage</a> given by cBridge contract. Otherwise, the transaction will fail. </p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong>
+If <code>receiver</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation"><a class="header" href="#transferid-generation">TransferId Generation</a></h3>
-<p>When you submit on-chain send transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a> and <a href="developer/api-reference/broken-reference">withdrawLiquidityForTransferRefund</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain send transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a> and <a href="developer/api-reference/broken-reference">withdrawLiquidityForTransferRefund</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">const transfer_id = ethers.utils.solidityKeccak256(
      [
       "address",
@@ -2044,9 +2001,6 @@ If <code>receiver</code> is a smart contract and the token you are sending is a 
 <h2 id="response"><a class="header" href="#response">Response <a href="#request-parameters-5" id="request-parameters-5"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response. </p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="gateway-gettransferstatus-1"><a href="#gateway-gettransferstatus-1" class="header">Gateway: GetTransferStatus</a></h1>
-<hr>
-<h2 id="description-get-transfer-status-from-cbridge-gateway"><a class="header" href="#description-get-transfer-status-from-cbridge-gateway">description: Get transfer status from cBridge gateway</a></h2>
 <h1 id="gateway-gettransferstatus"><a class="header" href="#gateway-gettransferstatus">Gateway: GetTransferStatus</a></h1>
 <h3 id="rest-api-2"><a class="header" href="#rest-api-2">REST API</a></h3>
 <p><mark style="color:green;"><code>POST</code></mark> <code>https://cbridge-prod2.celer.app/v2/getTransferStatus</code></p>
@@ -2076,8 +2030,6 @@ If <code>receiver</code> is a smart contract and the token you are sending is a 
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "status": 5,
@@ -2094,8 +2046,6 @@ If <code>receiver</code> is a smart contract and the token you are sending is a 
   "dst_block_tx_link": "https://arbiscan.io/tx/0xe73db1fff7407a72d4755cd52252d29afd2e5326b755725df56befba4ff7594b"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api-1"><a class="header" href="#grpc-web-api-1">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">import {
     GetTransferStatusRequest
@@ -2182,24 +2132,15 @@ const response = await client.getTransferStatus((request, null);
 </tbody>
 </table>
 
-<p>{% hint style=“info” %}
-We should focus on status types with <mark style="color:red;">BAD</mark> prefix, it shows the error reason for failed transfer transaction. Other status indicates normal transaction flow.
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+We should focus on status types with <mark style="color:red;">BAD</mark> prefix, it shows the error reason for failed transfer transaction. Other status indicates normal transaction flow.</p>
+</blockquote>
 <pre><code class="language-javascript">/// Code Sample
 
 const statusRes = await getTransferStatus({ transfer_id: transferId }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-pool-based-transfer-refund-1"><a href="#contract-pool-based-transfer-refund-1" class="header">Contract: Pool-Based Transfer Refund</a></h1>
-<hr>
-<h2 id="description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain-then-cbridge-contract-will-transfer-corresponding-assets-back-to-users-address-on-source-chain"><a class="header" href="#description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain-then-cbridge-contract-will-transfer-corresponding-assets-back-to-users-address-on-source-chain">description: &gt;-
-Get refund transaction info from cBridge gateway and submit the transaction
-on-chain. Then cBridge contract will transfer corresponding assets back to
-user’s address on source chain</a></h2>
 <h1 id="contract-pool-based-transfer-refund"><a class="header" href="#contract-pool-based-transfer-refund">Contract: Pool-Based Transfer Refund</a></h1>
 <h2 id="implementation-2"><a class="header" href="#implementation-2">Implementation</a></h2>
 <p>Here is the <mark style="color:red;">abi</mark> for Bridge: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/Bridge.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/Bridge.sol</a></p>
@@ -2220,11 +2161,10 @@ user’s address on source chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample</p>
+</blockquote>
 <pre><code class="language-javascript">import { base64, getAddress, hexlify } from "ethers/lib/utils";
 
 const wdmsg = base64.decode(wd_onchain);
@@ -2243,14 +2183,9 @@ const powers = _powers.map(item =&gt; {
     return base64.decode(item);
 });
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="response-1"><a class="header" href="#response-1">Response</a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="gateway-transferhistory-1"><a href="#gateway-transferhistory-1" class="header">Gateway: TransferHistory</a></h1>
-<hr>
-<h2 id="description-get-list-of-users-transfer-history"><a class="header" href="#description-get-list-of-users-transfer-history">description: Get list of user’s transfer history</a></h2>
 <h1 id="gateway-transferhistory"><a class="header" href="#gateway-transferhistory">Gateway: TransferHistory</a></h1>
 <h3 id="rest-api-3"><a class="header" href="#rest-api-3">REST API</a></h3>
 <h2 id="get-a-list-of-users-transfer-history"><a class="header" href="#get-a-list-of-users-transfer-history">Get a list of user’s transfer history</a></h2>
@@ -2270,8 +2205,6 @@ const powers = _powers.map(item =&gt; {
 </tbody>
 </table>
 </div>
-<p>{% tabs %}
-{% tab title=“200: OK “ %}</p>
 <pre><code class="language-javascript">{
   "err": null,
   "history": [
@@ -2280,8 +2213,6 @@ const powers = _powers.map(item =&gt; {
   "current_size": "0"
 }
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h3 id="grpc-web-api-2"><a class="header" href="#grpc-web-api-2">GRPC-Web API</a></h3>
 <pre><code class="language-javascript">// import transfer history request message 
 import {
@@ -2313,9 +2244,10 @@ const response = await client.transferHistory(request, null);
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
-To get the latest histories, use empty string as next_page_token. Otherwise, use value given by response.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+To get the latest histories, use empty string as next_page_token. Otherwise, use value given by response.</p>
+</blockquote>
 <h2 id="response-parameters-5"><a class="header" href="#response-parameters-5">Response Parameters</a></h2>
 <div class="table-wrapper">
 <table>
@@ -2329,9 +2261,10 @@ To get the latest histories, use empty string as next_page_token. Otherwise, use
 </tbody>
 </table>
 </div>
-<p>{% hint style=“info” %}
-If current_page_size in response is smaller than page_size in request, it means list has come to an end/
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If current_page_size in response is smaller than page_size in request, it means list has come to an end/</p>
+</blockquote>
 <h3 id="transferhistory"><a class="header" href="#transferhistory">TransferHistory</a></h3>
 <div class="table-wrapper">
 <table>
@@ -2364,11 +2297,6 @@ If current_page_size in response is smaller than page_size in request, it means 
 </table>
 </div>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-mint-canonical-tokenoriginaltokenvault-1"><a href="#contract-mint-canonical-tokenoriginaltokenvault-1" class="header">Contract: Mint Canonical Token(OriginalTokenVault)</a></h1>
-<hr>
-<h2 id="description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain"><a class="header" href="#description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain">description: &gt;-
-Lock user’s assets into cBridge and mint corresponding token on the
-destination chain</a></h2>
 <h1 id="contract-mint-canonical-tokenoriginaltokenvault"><a class="header" href="#contract-mint-canonical-tokenoriginaltokenvault">Contract: Mint Canonical Token(OriginalTokenVault)</a></h1>
 <h2 id="implementation-3"><a class="header" href="#implementation-3">Implementation</a></h2>
 <p>Minting is the process of locking original tokens on the source chain and minting canonical tokens that are pegged 1:1 on the destination chain. Original tokens can be deposited into the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol">OriginalTokenVault</a> contract on the source chain, specifically via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol#L64">deposit</a> or <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol#L84">depositNative</a> functions, which will trigger the minting of canonical tokens from the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/PeggedTokenBridge.sol">PeggedTokenBridge</a> contract on the destination chain. For advanced users, the two deposit functions can be called from smart contracts. </p>
@@ -2400,11 +2328,12 @@ destination chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation-1"><a class="header" href="#transferid-generation-1">TransferId Generation</a></h3>
-<p>When you submit on-chain deposit transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain deposit transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">/// Example transaction:
 /// https://testnet.bscscan.com/tx/0x5a4a0b50a74c9671f39694a506f1117bdfda2fbd001fe853c0494ca542d7687f#eventlog
 const deposit_id = ethers.utils.solidityKeccak256(
@@ -2431,11 +2360,6 @@ const deposit_id = ethers.utils.solidityKeccak256(
 <h2 id="response-2"><a class="header" href="#response-2">Response <a href="#request-parameters-11" id="request-parameters-11"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response. </p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-mint-canonical-tokenoriginaltokenvaultv2-1"><a href="#contract-mint-canonical-tokenoriginaltokenvaultv2-1" class="header">Contract: Mint Canonical Token(OriginalTokenVaultV2)</a></h1>
-<hr>
-<h2 id="description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain-1"><a class="header" href="#description---lock-users-assets-into-cbridge-and-mint-corresponding-token-on-the-destination-chain-1">description: &gt;-
-Lock user’s assets into cBridge and mint corresponding token on the
-destination chain</a></h2>
 <h1 id="contract-mint-canonical-tokenoriginaltokenvaultv2"><a class="header" href="#contract-mint-canonical-tokenoriginaltokenvaultv2">Contract: Mint Canonical Token(OriginalTokenVaultV2)</a></h1>
 <h2 id="implementation-4"><a class="header" href="#implementation-4">Implementation</a></h2>
 <p>There is no big difference between originalTokenVault and originalTokenVaultV2. However, you should use different parameters to generate transfer id.</p>
@@ -2462,11 +2386,12 @@ destination chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If the <code>mint_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation-2"><a class="header" href="#transferid-generation-2">TransferId Generation</a></h3>
-<p>When you submit on-chain deposit transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain deposit transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">/// Example transaction:
 /// https://testnet.bscscan.com/tx/0x5a4a0b50a74c9671f39694a506f1117bdfda2fbd001fe853c0494ca542d7687f#eventlog
 const deposit_id = ethers.utils.solidityKeccak256(
@@ -2495,12 +2420,6 @@ const deposit_id = ethers.utils.solidityKeccak256(
 <h2 id="response-3"><a class="header" href="#response-3">Response <a href="#request-parameters-14" id="request-parameters-14"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response. </p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-mint-canonical-token-transfer-refund-1"><a href="#contract-mint-canonical-token-transfer-refund-1" class="header">Contract: Mint Canonical Token Transfer Refund</a></h1>
-<hr>
-<h2 id="description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain-then-cbridge-originaltokenvault-contract-will-transfer-corresponding-assets-back-to-users-address-on-source-chain"><a class="header" href="#description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain-then-cbridge-originaltokenvault-contract-will-transfer-corresponding-assets-back-to-users-address-on-source-chain">description: &gt;-
-Get refund transaction info from cBridge gateway and submit the transaction
-on-chain. Then cBridge OriginalTokenVault contract will transfer corresponding
-assets back to user’s address on source chain</a></h2>
 <h1 id="contract-mint-canonical-token-transfer-refund"><a class="header" href="#contract-mint-canonical-token-transfer-refund">Contract: Mint Canonical Token Transfer Refund</a></h1>
 <h2 id="implementation-5"><a class="header" href="#implementation-5">Implementation</a></h2>
 <p>Here is the <mark style="color:red;">abi</mark> for OriginalTokenVault: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/OriginalTokenVault.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/OriginalTokenVault.sol</a></p>
@@ -2521,11 +2440,10 @@ assets back to user’s address on source chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample</p>
+</blockquote>
 <pre><code class="language-javascript">import { base64, getAddress, hexlify } from "ethers/lib/utils";
 
 const wdmsg = base64.decode(wd_onchain);
@@ -2544,14 +2462,9 @@ const powers = _powers.map(item =&gt; {
     return base64.decode(item);
 });
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="response-4"><a class="header" href="#response-4">Response</a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-burn-canonical-tokenpeggedtokenbridge-1"><a href="#contract-burn-canonical-tokenpeggedtokenbridge-1" class="header">Contract: Burn Canonical Token(PeggedTokenBridge)</a></h1>
-<hr>
-<h2 id="description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge"><a class="header" href="#description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge">description: ‘Contract: Burn pegged tokens and unlock original token from cBridge’</a></h2>
 <h1 id="contract-burn-canonical-tokenpeggedtokenbridge"><a class="header" href="#contract-burn-canonical-tokenpeggedtokenbridge">Contract: Burn Canonical Token(PeggedTokenBridge)</a></h1>
 <h2 id="implementation-6"><a class="header" href="#implementation-7">Implementation <a href="#implementation-7" id="implementation-7"></a></a></h2>
 <p>Burning is the reverse of the <a href="https://app.gitbook.com/o/KqK7YjAlzW1oggY8EUgX/s/e2ozVyumMnvf5tn0izji/c/a9lgLSP9VsmBEO9eAsJt/developer/api-reference/contract-mint-canonical-token">minting</a> process. Canonical tokens can be <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/PeggedTokenBridge.sol#L98">burned</a> via the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/PeggedTokenBridge.sol">PeggedTokenBridge</a> contract on the source chain, which will trigger the release of the original tokens from the <a href="https://github.com/celer-network/sgn-v2-contracts/blob/b0cf02c15e25f66279420e3ff6a8b2fe07404bab/contracts/pegged/OriginalTokenVault.sol">OriginalTokenVault</a> contract on the destination chain. For advanced users, the burn function can be called from smart contracts.</p>
@@ -2576,11 +2489,12 @@ const powers = _powers.map(item =&gt; {
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation-3"><a class="header" href="#transferid-generation-4">TransferId Generation <a href="#transferid-generation-4" id="transferid-generation-4"></a></a></h3>
-<p>When you submit on-chain burn transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain burn transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">/// Example transaction: 
 /// https://www.oklink.com/en/oec-test/tx/0x56c066218fcfab624d53abeea74486a33c0aa2339bde333d94ccc143a83b98b4?tab=3
 
@@ -2603,15 +2517,13 @@ const burn_id = ethers.utils.solidityKeccak256(
      ],
 )
 </code></pre>
-<p>{% hint style=“warning” %}
-Please be aware that transfer id generation parameters are different between mint flow and burn flow.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Please be aware that transfer id generation parameters are different between mint flow and burn flow.</p>
+</blockquote>
 <h2 id="response-5"><a class="header" href="#response-5">Response <a href="#request-parameters-1-1" id="request-parameters-1-1"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-burn-canonical-token-peggedtokenbridgev2-1"><a href="#contract-burn-canonical-token-peggedtokenbridgev2-1" class="header">Contract: Burn Canonical Token (PeggedTokenBridgeV2)</a></h1>
-<hr>
-<h2 id="description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge-1"><a class="header" href="#description-contract-burn-pegged-tokens-and-unlock-original-token-from-cbridge-1">description: ‘Contract: Burn pegged tokens and unlock original token from cBridge’</a></h2>
 <h1 id="contract-burn-canonical-token-peggedtokenbridgev2"><a class="header" href="#contract-burn-canonical-token-peggedtokenbridgev2">Contract: Burn Canonical Token (PeggedTokenBridgeV2)</a></h1>
 <h2 id="implementation-8"><a class="header" href="#implementation-9">Implementation <a href="#implementation-9" id="implementation-9"></a></a></h2>
 <p>The user can specify destination chain id when submitting burn transaction to PeggedTokenBridgeV2. The destination chain id can be original chain id which means the user will bring back his asset from OriginalTokenVault. The destination chain id could indicate another pegged chain where another PeggedTokenBridgeV2 is deployed and able to mint corresponding canonical token. </p>
@@ -2637,11 +2549,12 @@ Please be aware that transfer id generation parameters are different between min
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+If <code>withdraw_account</code> is a smart contract and the token you are sending is a wrapped native gas token on the destination chain, make sure the contract can receive native gas token by implementing <code>fallback</code> / <code>receive</code> functions.</p>
+</blockquote>
 <h3 id="transferid-generation-5"><a class="header" href="#transferid-generation-6">TransferId Generation <a href="#transferid-generation-6" id="transferid-generation-6"></a></a></h3>
-<p>When you submit on-chain burn transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain burn transaction, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <pre><code class="language-javascript">const burn_id = ethers.utils.solidityKeccak256(
      [
       "address",
@@ -2665,18 +2578,13 @@ If <code>withdraw_account</code> is a smart contract and the token you are sendi
      ],
 )
 </code></pre>
-<p>{% hint style=“warning” %}
-Please be aware that transfer id generation parameters are different between <strong>PeggedTokenBridge</strong> and <strong>PeggedTokenBridgeV2</strong>
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Please be aware that transfer id generation parameters are different between <strong>PeggedTokenBridge</strong> and <strong>PeggedTokenBridgeV2</strong></p>
+</blockquote>
 <h2 id="response-6"><a class="header" href="#response-6">Response <a href="#request-parameters-1-2" id="request-parameters-1-2"></a></a></h2>
 <p>Since this function is an Ethereum on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-burn-canonical-token-transfer-refund-1"><a href="#contract-burn-canonical-token-transfer-refund-1" class="header">Contract: Burn Canonical Token Transfer Refund</a></h1>
-<hr>
-<h2 id="description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain--then-cbridge-peggedtokenbridge-contract-will-mint-corresponding-assets-to-users-address-on-source-chain"><a class="header" href="#description---get-refund-transaction-info-from-cbridge-gateway-and-submit-the-transaction-on-chain--then-cbridge-peggedtokenbridge-contract-will-mint-corresponding-assets-to-users-address-on-source-chain">description: &gt;-
-Get refund transaction info from cBridge gateway and submit the transaction
-on-chain.  Then cBridge PeggedTokenBridge contract will mint corresponding
-assets to user’s address on source chain</a></h2>
 <h1 id="contract-burn-canonical-token-transfer-refund"><a class="header" href="#contract-burn-canonical-token-transfer-refund">Contract: Burn Canonical Token Transfer Refund</a></h1>
 <h2 id="implementation-10"><a class="header" href="#implementation-10">Implementation</a></h2>
 <p>Here is the <mark style="color:red;">abi</mark> for PeggedTokenBridge: <a href="https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol">https://github.com/celer-network/cBridge-typescript-client/tree/main/contract/abi/pegged/PeggedTokenBridge.sol</a></p>
@@ -2697,11 +2605,10 @@ assets to user’s address on source chain</a></h2>
 </tbody>
 </table>
 </div>
-<p>{% hint style=“warning” %}
-Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample
-{% endhint %}</p>
-<p>{% tabs %}
-{% tab title=“JavaScript” %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Notice: Since the types of parameters are different between getTransferStatus response and withdraw request, please convert them accordingly. See details in the below code sample</p>
+</blockquote>
 <pre><code class="language-javascript">import { base64, getAddress, hexlify } from "ethers/lib/utils";
 
 const wdmsg = base64.decode(wd_onchain);
@@ -2720,16 +2627,9 @@ const powers = _powers.map(item =&gt; {
     return base64.decode(item);
 });
 </code></pre>
-<p>{% endtab %}
-{% endtabs %}</p>
 <h2 id="response-7"><a class="header" href="#response-7">Response</a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="gateway-markrefrelation-1"><a href="#gateway-markrefrelation-1" class="header">Gateway: MarkRefRelation</a></h1>
-<hr>
-<h2 id="description---mark-the-transfer-with-your-ref-code-after-you-submit-on-chain-transaction-successfully"><a class="header" href="#description---mark-the-transfer-with-your-ref-code-after-you-submit-on-chain-transaction-successfully">description: &gt;-
-Mark the transfer with your ref code after you submit on-chain transaction
-successfully.</a></h2>
 <h1 id="gateway-markrefrelation"><a class="header" href="#gateway-markrefrelation">Gateway: MarkRefRelation</a></h1>
 <h3 id="rest-api-4"><a class="header" href="#rest-api-4">Rest API <a href="#implementation-11" id="implementation-11"></a></a></h3>
 <h2 id="make-a-reference-between-transfer-transaction-with-your-ref-code"><a class="header" href="#make-a-reference-between-transfer-transaction-with-your-ref-code">Make a reference between transfer transaction with your ref code</a></h2>
@@ -2783,21 +2683,18 @@ const response = await client.markRefRelation(request, null);
 <li><a href="#transferid-generation-1">Mint Token Transfer Id Generation</a></li>
 <li><a href="#transferid-generation-4">Burn Token Transfer Id Generation</a></li>
 </ul>
-<p>{% hint style=“warning” %}
-The best practice for markRefRelation is notifying cBridge gateway after on-chain transaction has been submitted. 
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+The best practice for markRefRelation is notifying cBridge gateway after on-chain transaction has been submitted. </p>
+</blockquote>
 <h2 id="response-8"><a class="header" href="#response-8">Response <a href="#request-parameters-1-3" id="request-parameters-1-3"></a></a></h2>
 <p>Since this request is notifying cBridge gateway one transfer is related to a ref code, normal response returns an empty body. </p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-transferagent-mint-token-submission-1"><a href="#contract-transferagent-mint-token-submission-1" class="header">Contract: TransferAgent Mint Token Submission</a></h1>
-<hr>
-<h2 id="description---lock-users-assets-into-cbridge-contract-mint-corresponding-tokens-to-receiver-which-address-can-be-any-length"><a class="header" href="#description---lock-users-assets-into-cbridge-contract-mint-corresponding-tokens-to-receiver-which-address-can-be-any-length">description: &gt;-
-Lock user’s assets into cBridge contract, mint corresponding tokens to
-receiver which address can be any length</a></h2>
 <h1 id="contract-transferagent-mint-token-submission"><a class="header" href="#contract-transferagent-mint-token-submission">Contract: TransferAgent Mint Token Submission</a></h1>
-<p>{% hint style=“warning” %}
-TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes</p>
+</blockquote>
 <h2 id="implementation-12"><a class="header" href="#implementation-13">Implementation <a href="#implementation-13" id="implementation-13"></a></a></h2>
 <p>Through TransferAgent’s transfer function, user can specify token to be locked on source chain and receiver’s address on destination chain. According to <a href="#peggedpairconfig">pegged_pair_config.vault_version</a>, you should set different parameters communicating with TransferAgent contract.</p>
 <h4 id="communicate-with-originaltokenvault-through-transferagent-contract"><a class="header" href="#communicate-with-originaltokenvault-through-transferagent-contract">Communicate with OriginalTokenVault through TransferAgent contract</a></h4>
@@ -2848,7 +2745,7 @@ TransferAgent transfer is not recommended if receiver’s wallet address is no m
 </table>
 </div>
 <h3 id="transferid-generation-9"><a class="header" href="#transferid-generation-10">TransferId Generation <a href="#transferid-generation-10" id="transferid-generation-10"></a></a></h3>
-<p>When you submit on-chain mint transaction through TransferAgentContract, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain mint transaction through TransferAgentContract, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <h4 id="transfer-id-generation-with-originaltokenvault"><a class="header" href="#transfer-id-generation-with-originaltokenvault">Transfer Id Generation with OriginalTokenVault</a></h4>
 <pre><code class="language-javascript">const mint_id = ethers.utils.solidityKeccak256(
      [
@@ -2898,15 +2795,11 @@ TransferAgent transfer is not recommended if receiver’s wallet address is no m
 <h2 id="response-9"><a class="header" href="#response-9">Response <a href="#request-parameters-1-4" id="request-parameters-1-4"></a></a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-transferagent-burn-token-submission-1"><a href="#contract-transferagent-burn-token-submission-1" class="header">Contract: TransferAgent Burn Token Submission</a></h1>
-<hr>
-<h2 id="description---burn-canonical-token-on-source-chain-and-unlock-users-assets-on-destination-chain"><a class="header" href="#description---burn-canonical-token-on-source-chain-and-unlock-users-assets-on-destination-chain">description: &gt;-
-Burn canonical token on source chain and unlock user’s assets on destination
-chain</a></h2>
 <h1 id="contract-transferagent-burn-token-submission"><a class="header" href="#contract-transferagent-burn-token-submission">Contract: TransferAgent Burn Token Submission</a></h1>
-<p>{% hint style=“warning” %}
-TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+TransferAgent transfer is not recommended if receiver’s wallet address is no more than 20 bytes</p>
+</blockquote>
 <h2 id="implementation-14"><a class="header" href="#implementation-15">Implementation <a href="#implementation-15" id="implementation-15"></a></a></h2>
 <p>Through TransferAgent’s transfer function, user can burn token on source chain and unlock user’s assets on destination chain. According to <a href="#peggedpairconfig">pegged_pair_config.bridge_version</a>, you should set different parameters communicating with TransferAgent contract.</p>
 <h4 id="communicate-with-peggedtokenbridge-through-transferagent-contract"><a class="header" href="#communicate-with-peggedtokenbridge-through-transferagent-contract">Communicate with PeggedTokenBridge through TransferAgent contract</a></h4>
@@ -2957,7 +2850,7 @@ TransferAgent transfer is not recommended if receiver’s wallet address is no m
 </table>
 </div>
 <h3 id="transferid-generation-11"><a class="header" href="#transferid-generation-12">TransferId Generation <a href="#transferid-generation-12" id="transferid-generation-12"></a></a></h3>
-<p>When you submit on-chain mint transaction through TransferAgentContract, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus-1">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
+<p>When you submit on-chain mint transaction through TransferAgentContract, you can also generate a transfer id for future reference. For example, it is used for <a href="#gateway-gettransferstatus">getTransferStatus</a>. It should be the same as transferId inside on-chain transaction log. </p>
 <h4 id="transfer-id-generation-with-peggedtokenbridge"><a class="header" href="#transfer-id-generation-with-peggedtokenbridge">Transfer Id Generation with PeggedTokenBridge</a></h4>
 <pre><code class="language-javascript">const burn_id = ethers.utils.solidityKeccak256(
      [
@@ -3006,9 +2899,6 @@ TransferAgent transfer is not recommended if receiver’s wallet address is no m
 <h2 id="response-10"><a class="header" href="#response-10">Response <a href="#request-parameters-1-5" id="request-parameters-1-5"></a></a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-aptos-vault-mint-token-submission-1"><a href="#contract-aptos-vault-mint-token-submission-1" class="header">Contract: Aptos Vault Mint Token Submission</a></h1>
-<hr>
-<h2 id="description-submit-deposit-transaction-from-aptos-chain"><a class="header" href="#description-submit-deposit-transaction-from-aptos-chain">description: Submit deposit transaction from Aptos chain</a></h2>
 <h1 id="contract-aptos-vault-mint-token-submission"><a class="header" href="#contract-aptos-vault-mint-token-submission">Contract: Aptos Vault Mint Token Submission</a></h1>
 <h2 id="implementation-16"><a class="header" href="#implementation-17">Implementation <a href="#implementation-17" id="implementation-17"></a></a></h2>
 <p>You will generate Aptos transaction payload and submit it on-chain</p>
@@ -3070,9 +2960,6 @@ const transferId = ethers.utils.solidityKeccak256(
 <h2 id="response-11"><a class="header" href="#response-11">Response <a href="#request-parameters-1-6" id="request-parameters-1-6"></a></a></h2>
 <p>Since this function is an on-chain transaction, the response is the corresponding transaction response</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="contract-aptos-pegbridge-burn-token-submission-1"><a href="#contract-aptos-pegbridge-burn-token-submission-1" class="header">Contract: Aptos PegBridge Burn Token Submission</a></h1>
-<hr>
-<h2 id="description-submit-burn-transaction-from-aptos-chain"><a class="header" href="#description-submit-burn-transaction-from-aptos-chain">description: Submit burn transaction from Aptos chain</a></h2>
 <h1 id="contract-aptos-pegbridge-burn-token-submission"><a class="header" href="#contract-aptos-pegbridge-burn-token-submission">Contract: Aptos PegBridge Burn Token Submission</a></h1>
 <h2 id="implementation-18"><a class="header" href="#implementation-19">Implementation <a href="#implementation-19" id="implementation-19"></a></a></h2>
 <p>You will generate Aptos transaction payload and submit it on-chain</p>
@@ -3165,9 +3052,10 @@ const transferId = ethers.utils.solidityKeccak256(
 <h2 id=""><a class="header" href="#"></a></h2>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
-<p>{% hint style=“info” %}
-Didn’t find an answer? Join the <a href="https://discord.gg/Trhab5w">community Discord</a> or <a href="https://t.me/celernetwork">Telegram</a> to get support.
-{% endhint %}</p>
+<blockquote>
+<p><strong>Note:</strong>
+Didn’t find an answer? Join the <a href="https://discord.gg/Trhab5w">community Discord</a> or <a href="https://t.me/celernetwork">Telegram</a> to get support.</p>
+</blockquote>
 <h3 id="bridge-fee"><a class="header" href="#bridge-fee">Bridge Fee</a></h3>
 <h4 id="how-is-the-bridge-fee-calculated"><a class="header" href="#how-is-the-bridge-fee-calculated">How is the bridge fee calculated?</a></h4>
 <p>Celer cBridge offers two bridging models, xAsset and xLiquidity, with their respective fee models.</p>
