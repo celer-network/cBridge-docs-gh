@@ -1,14 +1,17 @@
-# Circle Cross-chain USDC Transfer Protocol(CCTP)
 
-For Circle Cross-Chain USDC Protocol supported chains, the USDC flow is going through Circle bridge contracts and its attestation service instead of cBridge or peg bridge contracts and SGN.
+# Circle Cross-chain USDC Transfer Protocol V2 (CCTP V2)
+
+For Circle Cross-Chain USDC Transfer Protocol V2 supported networks, the USDC flow is going through Circle bridge contracts and its attestation service instead of cBridge or peg bridge contracts and SGN.
 
 The following content is an integration tutorial from frontend perspective.
 
-<img src="../.gitbook/assets/image (41).png" alt=""><figcaption><p>CCPT flow</p></figcaption>
+<img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption>
+
+CCTP V2 now supports both **Fast Transfer** and **Standard Transfer,** you can read more about how they work and differ in this doc [https://developers.circle.com/cctp](https://developers.circle.com/cctp).
 
 ## Proxy Contracts
 
-<table data-header-hidden><thead><tr><th width="195"></th><th width="502.3333333333333"></th></tr></thead><tbody><tr><td>Chain</td><td>Address</td></tr><tr><td>Ethereum 1</td><td><a href="https://etherscan.io/address/0xC75fdd24820ddCdADeE9BB653aE6cD73BA8f0e80">0xC75fdd24820ddCdADeE9BB653aE6cD73BA8f0e80</a></td></tr><tr><td>Avalanche 43114</td><td><a href="https://snowtrace.io/address/0x358234B325EF9eA8115291A8b81b7d33A2Fa762D">0x358234B325EF9eA8115291A8b81b7d33A2Fa762D</a></td></tr><tr><td>Arbitrum One 42161</td><td><a href="https://arbiscan.io/address/0x90811d8Ea6499D3e5CbfBa3B279FB4387EbDfce9">0x90811d8Ea6499D3e5CbfBa3B279FB4387EbDfce9</a></td></tr><tr><td>Optimism 10 </td><td><a href="http://optimistic.etherscan.io/address/0xcfA5906d71e057BE50f4CF2a5bc41FF7bD0f0B91">0xcfA5906d71e057BE50f4CF2a5bc41FF7bD0f0B91</a></td></tr><tr><td>Base 8453</td><td><a href="https://basescan.org/address/0xCD086225f47155937cc57b320f8D37933B683197">0xCD086225f47155937cc57b320f8D37933B683197</a></td></tr><tr><td>Polygon PoS 137</td><td><a href="https://polygonscan.com/address/0x04869755Da6E3F6eE5D190b8C6E56E1c33604cf2">0x04869755Da6E3F6eE5D190b8C6E56E1c33604cf2</a></td></tr><tr><td>Plume Mainnet 98866</td><td><a href="https://explorer.plume.org/address/0x9B36f165baB9ebe611d491180418d8De4b8f3a1f">0x9B36f165baB9ebe611d491180418d8De4b8f3a1f</a></td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="195"></th><th width="502.3333333333333"></th></tr></thead><tbody><tr><td><strong>Supported Network</strong></td><td><strong>Address</strong></td></tr><tr><td>Ethereum 1</td><td><a href="https://etherscan.io/address/0xC75fdd24820ddCdADeE9BB653aE6cD73BA8f0e80">0xC75fdd24820ddCdADeE9BB653aE6cD73BA8f0e80</a></td></tr><tr><td>Avalanche 43114</td><td><a href="https://snowtrace.io/address/0x358234B325EF9eA8115291A8b81b7d33A2Fa762D">0x358234B325EF9eA8115291A8b81b7d33A2Fa762D</a></td></tr><tr><td>Arbitrum One 42161</td><td><a href="https://arbiscan.io/address/0x90811d8Ea6499D3e5CbfBa3B279FB4387EbDfce9">0x90811d8Ea6499D3e5CbfBa3B279FB4387EbDfce9</a></td></tr><tr><td>Optimism 10 </td><td><a href="http://optimistic.etherscan.io/address/0xcfA5906d71e057BE50f4CF2a5bc41FF7bD0f0B91">0xcfA5906d71e057BE50f4CF2a5bc41FF7bD0f0B91</a></td></tr><tr><td>Base 8453</td><td><a href="https://basescan.org/address/0xCD086225f47155937cc57b320f8D37933B683197">0xCD086225f47155937cc57b320f8D37933B683197</a></td></tr><tr><td>Polygon PoS 137</td><td><a href="https://polygonscan.com/address/0x04869755Da6E3F6eE5D190b8C6E56E1c33604cf2">0x04869755Da6E3F6eE5D190b8C6E56E1c33604cf2</a></td></tr><tr><td>Plume Mainnet 98866</td><td><a href="https://explorer.plume.org/address/0x9B36f165baB9ebe611d491180418d8De4b8f3a1f">0x9B36f165baB9ebe611d491180418d8De4b8f3a1f</a></td></tr></tbody></table>
 
 Also you can get the related contract addressed from cBridge gateway api
 

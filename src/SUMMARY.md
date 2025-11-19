@@ -26,7 +26,7 @@
 
 # Developer
 
-* [Circle Cross-chain USDC Transfer Protocol(CCTP)](developer/circle-cross-chain-usdc-transfer-protocol-cctp.md)
+* [Circle Cross-chain USDC Transfer Protocol V2 (CCTP V2)](developer/circle-cross-chain-usdc-transfer-protocol-v2-cctp-v2.md)
 * [cBridge SDK](developer/cbridge-sdk.md)
 * [cBridge Pool-Based Transfer  (xLiquidity)](developer/cbridge-pool-based-transfer-xliquidity/README.md)
   * [Transfer](developer/cbridge-pool-based-transfer-xliquidity/transfer.md)
