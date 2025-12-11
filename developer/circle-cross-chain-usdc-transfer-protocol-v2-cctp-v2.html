@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-e8989e11.js";
+            window.path_to_searchindex_js = "../searchindex-f22eec1f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-a63134a8.js"></script>
@@ -232,7 +232,11 @@
 </code></pre>
 <h2 id="searching-destination-transaction-status"><a class="header" href="#searching-destination-transaction-status">Searching destination transaction status</a></h2>
 <p>Searching the final destination chain status by the gateway API: GetTransferStatus.</p>
-<p>The API requires a tracking field <strong>transferId</strong> for the status quering, here is an example with ether.js.</p>
+<p>The API requires a tracking field <strong>transferId</strong> for the status queries.</p>
+<ul>
+<li>For API v2: Use the source chain transaction hash as the <code>transferId</code> value.</li>
+<li>For API v1: Refer to the following example implemented with ethers.js:</li>
+</ul>
 <pre><code class="language-typescript">getTransferId(): string {
       return ethers.utils.solidityKeccak256(
           ["string", "address", "uint64", "uint64"],
