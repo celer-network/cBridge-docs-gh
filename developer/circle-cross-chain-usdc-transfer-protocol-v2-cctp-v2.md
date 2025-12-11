@@ -75,7 +75,10 @@ event Deposited(address sender, bytes32 recipient, uint64 dstChid, uint256 amoun
 
 Searching the final destination chain status by the gateway API: GetTransferStatus.
 
-The API requires a tracking field **transferId** for the status quering, here is an example with ether.js.
+The API requires a tracking field **transferId** for the status queries.
+
+* For API v2: Use the source chain transaction hash as the `transferId` value.
+* For API v1: Refer to the following example implemented with ethers.js:
 
 ```typescript
 getTransferId(): string {
